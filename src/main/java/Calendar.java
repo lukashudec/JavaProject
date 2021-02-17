@@ -20,8 +20,8 @@ public class Calendar {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Calendar calendar = (Calendar) o;
-        return Objects.equals(rawCalendar, calendar.rawCalendar) && Arrays.equals(bounds, calendar.bounds);
+        Calendar calendar2 = (Calendar) o;
+        return calendar.toString() == calendar2.toString();
     }
 
     @Override
