@@ -31,7 +31,7 @@ public class Calendar {
 
     @Override
     public String toString() {
-        return Arrays.deepToString(this.rawCalendar.toArray()) + " // " + Arrays.toString(this.bounds);
+        return Arrays.deepToString(this.rawCalendar.toArray()) + " / " + Arrays.toString(this.bounds);
     }
 
     public String getCalendar() {
@@ -80,6 +80,10 @@ public class Calendar {
 
     public List<Integer[]> getPossibleEvents(Calendar cal2, int minDuration) {
         return this.mergeWithCalendar(cal2).getFreeTime(minDuration);
+    }
+
+    public List<String[]> getPrettyTime() {
+        return getPrettyTime(30);
     }
 
     public List<String[]> getPrettyTime(int minDuration) {
