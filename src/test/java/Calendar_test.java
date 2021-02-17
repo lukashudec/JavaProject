@@ -24,6 +24,15 @@ public class Calendar_test {
     }
 
     @Test
+    void test_calendar_equality() {
+        Calendar cal1 = new Calendar(new ArrayList<>(List.of
+                (new String[]{"09:00", "10:30"}, new String[]{"12:00", "13:00"}, new String[]{"16:00", "18:00"})), new String[]{"09:00", "20:00"});
+        Calendar cal2 = new Calendar("09:00-10:30,12:00-13:00,16:00-18:00","09:00-20:00");
+        assertEquals(cal2, cal1, "Not equal");
+        assertEquals(cal1.getCalendar(), cal2.getCalendar(), "Not equal" );
+    }
+
+    @Test
     void test_calendar_merge() {
         Calendar cal1 = new Calendar(new ArrayList<>(List.of
                 (new String[]{"12:00", "13:00"}, new String[]{"16:00", "18:00"})),

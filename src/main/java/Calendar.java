@@ -21,12 +21,12 @@ public class Calendar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Calendar calendar2 = (Calendar) o;
-        return calendar.toString() == calendar2.toString();
+        return this.hashCode()==calendar2.hashCode();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rawCalendar, bounds);
+        return Objects.hash(this.toString());
     }
 
     @Override
