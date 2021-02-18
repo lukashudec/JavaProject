@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,13 +33,13 @@ public class MyStepDefs {
 
     @Then("possible events are {}")
     public void possibleEventsAre(String events) {
-        List<String[]> result_pretty = listOfCalendars.get(0).mergeWithCalendar(listOfCalendars.get(1)).getPrettyTime();
-        assertEquals(events, Arrays.deepToString(result_pretty.toArray()));
+        String result_pretty = listOfCalendars.get(0).mergeWithCalendar(listOfCalendars.get(1)).getPrettyTime();
+        assertEquals(events, result_pretty);
     }
 
     @Then("free time is {}")
     public void freeTimeIs(String freeTime) {
-        assertEquals(freeTime,Arrays.deepToString(listOfCalendars.get(0).getPrettyTime().toArray()));
+        assertEquals(freeTime,listOfCalendars.get(0).getPrettyTime());
     }
 
 

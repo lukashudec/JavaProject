@@ -84,17 +84,17 @@ public class Calendar {
         return this.mergeWithCalendar(cal2).getFreeTime(minDuration);
     }
 
-    public List<String[]> getPrettyTime() {
+    public String getPrettyTime() {
         return getPrettyTime(30);
     }
 
-    public List<String[]> getPrettyTime(int minDuration) {
+    public String getPrettyTime(int minDuration) {
         List<String[]> result = new ArrayList<>();
         for (Integer[] i : this.getFreeTime(minDuration)) {
             result.add(new String[]{formatTime(i[0]/60)+ ':' + formatTime(i[0]% 60),
                     formatTime(i[1]/60)+ ':' + formatTime(i[1]% 60)});
         }
-        return result;
+        return Arrays.deepToString(result.toArray());
     }
 
     public static List<String[]> getTime(String stringTime) {
