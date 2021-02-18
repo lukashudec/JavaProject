@@ -7,12 +7,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyStepDefs {
 
     List<Calendar> listOfCalendars = new ArrayList<>();
+    Calendar result;
 
     @Before()
     public void beforeEach(){
@@ -21,27 +23,29 @@ public class MyStepDefs {
 
     @When("merging calendars")
     public void mergingCalendars() {
-        System.out.println("Stepity");
+        result = listOfCalendars.get(0).mergeWithCalendar(listOfCalendars.get(1));
     }
 
     @Then("result is")
-    public void resultIs() {
-        System.out.println("Stepity");
+    public void resultIs(List<Entry> table) {
+        Calendar expected_result = new Calendar(table.get(0).calendar, table.get(0).bounds);
+        assertEquals(expected_result, result);
     }
 
-    @Then("possible events are")
-    public void possibleEventsAre() {
-        System.out.println("Stepity");
+    @Then("possible events are {}")
+    public void possibleEventsAre(String events) {
+        List<String[]> result_pretty = listOfCalendars.get(0).mergeWithCalendar(listOfCalendars.get(1)).getPrettyTime();
+        assertEquals(events, Arrays.deepToString(result_pretty.toArray()));
     }
 
-    @Then("free time is")
-    public void freeTimeIs() {
-        System.out.println("Stepity");
+    @Then("free time is {}")
+    public void freeTimeIs(String freeTime) {
+        assertEquals(freeTime,Arrays.deepToString(listOfCalendars.get(0).getPrettyTime().toArray()));
     }
 
 
     @Then("toString returns {}")
-    public void tostringReturns(String result) {
+    public void toStringReturns(String result) {
         for (Calendar cal : listOfCalendars) {
             assertEquals(result, cal.toString());
         }
@@ -57,6 +61,14 @@ public class MyStepDefs {
     @Given("calendar {} with {}")
     public void calendarsCalendarWithBounds(String calendar, String bounds) {
         listOfCalendars.add(new Calendar(calendar,bounds));
+    }
+
+    @Then("different creations are equal")
+    public void differentCreationsAreEqual() {
+        List<Integer[]> result_time = listOfCalendars.get(0).mergeWithCalendar(listOfCalendars.get(1)).getFreeTime();
+        List<Integer[]> result_time2 = listOfCalendars.get(0).getPossibleEvents(listOfCalendars.get(1), 30);
+        assertArrayEquals(result_time.toArray(), result_time2.toArray());
+
     }
 
     static class Entry {
