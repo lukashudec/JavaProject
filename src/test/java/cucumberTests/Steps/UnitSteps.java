@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MyStepDefs {
+public class UnitSteps {
 
     List<Calendar> listOfCalendars = new ArrayList<>();
     Calendar result;
@@ -53,7 +53,7 @@ public class MyStepDefs {
     @Given("calendars")
     public void calendars(List<Entry> table) {
         for (Entry l : table) {
-            listOfCalendars.add(new Calendar(l.calendar,l.bounds));
+            listOfCalendars.add(l.getCalendar());
         }
     }
 
@@ -70,8 +70,17 @@ public class MyStepDefs {
 
     }
 
+    @Then("getCalendar is {}")
+    public void getCalendar(String s) {
+        assertEquals(s,listOfCalendars.get(0).getCalendar());
+    }
+
     static class Entry {
         public String calendar;
         public String bounds;
+
+        public Calendar getCalendar() {
+            return new Calendar(calendar, bounds);
+        }
     }
 }

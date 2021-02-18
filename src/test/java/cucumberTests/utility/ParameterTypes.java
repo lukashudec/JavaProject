@@ -1,7 +1,7 @@
-package cucumberTests.Steps;
+package cucumberTests.utility;
 
 // copied from https://github.com/cucumber/cucumber-jvm project
-// needed for custom custom dataTables
+// needed for custom dataTables
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.DefaultDataTableCellTransformer;
 import io.cucumber.java.DefaultDataTableEntryTransformer;
