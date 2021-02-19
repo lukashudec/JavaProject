@@ -1,10 +1,10 @@
 package cucumberTests.Steps;
 
 import Calendar.Calendar;
+import cucumberTests.utility.Entry;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,9 @@ public class UnitSteps {
     }
 
     @Then("result is")
-    public void resultIs(List<Entry> table) {
-        Calendar expected_result = new Calendar(table.get(0).calendar, table.get(0).bounds);
+    public void resultIs(DataTable table) {
+        Entry entry = new Entry(table,true);
+        Calendar expected_result = new Calendar(entry.getRow(0).get(0), entry.getRow(0).get(1));
         assertEquals(expected_result, result);
     }
 
@@ -51,9 +52,10 @@ public class UnitSteps {
     }
 
     @Given("calendars")
-    public void calendars(List<Entry> table) {
-        for (Entry l : table) {
-            listOfCalendars.add(l.getCalendar());
+    public void calendars(DataTable table) {
+        Entry entry = new Entry(table,true);
+        for (List<String> l : entry.data) {
+            listOfCalendars.add(new Calendar(l.get(0),l.get(1)));
         }
     }
 
@@ -75,12 +77,4 @@ public class UnitSteps {
         assertEquals(s,listOfCalendars.get(0).getCalendar());
     }
 
-    static class Entry {
-        public String calendar;
-        public String bounds;
-
-        public Calendar getCalendar() {
-            return new Calendar(calendar, bounds);
-        }
-    }
 }
