@@ -1,4 +1,4 @@
-package E2ETests.Steps;
+package E2ETests.Steps.WebSteps;
 
 import E2ETests.pages.*;
 import E2ETests.utility.Entry;
