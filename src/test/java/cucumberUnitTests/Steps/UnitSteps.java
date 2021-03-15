@@ -1,7 +1,7 @@
-package cucumberTests.Steps;
+package cucumberUnitTests.Steps;
 
 import Calendar.Calendar;
-import cucumberTests.utility.Entry;
+import cucumberUnitTests.utility.Entry;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;

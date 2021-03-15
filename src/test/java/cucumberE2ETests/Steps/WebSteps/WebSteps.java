@@ -1,7 +1,7 @@
-package E2ETests.Steps.WebSteps;
+package cucumberE2ETests.Steps.WebSteps;
 
-import E2ETests.pages.*;
-import E2ETests.utility.Entry;
+import cucumberE2ETests.pages.*;
+import cucumberE2ETests.utility.Entry;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

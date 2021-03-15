@@ -1,4 +1,4 @@
-package E2ETests.utility;
+package cucumberE2ETests.utility;
 
 import io.cucumber.datatable.DataTable;
 

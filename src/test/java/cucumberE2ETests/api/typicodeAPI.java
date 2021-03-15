@@ -1,4 +1,4 @@
-package E2ETests.api;
+package cucumberE2ETests.api;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;

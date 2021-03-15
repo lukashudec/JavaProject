@@ -1,6 +1,6 @@
-package E2ETests.Steps.ApiSteps;
+package cucumberE2ETests.Steps.ApiSteps;
 
-import E2ETests.api.typicodeAPI;
+import cucumberE2ETests.api.typicodeAPI;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;

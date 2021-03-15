@@ -1,4 +1,4 @@
-package E2ETests;
+package cucumberE2ETests;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

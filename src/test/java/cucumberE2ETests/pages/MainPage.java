@@ -1,4 +1,4 @@
-package E2ETests.pages;
+package cucumberE2ETests.pages;
 
 import org.openqa.selenium.WebDriver;
 
