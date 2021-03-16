@@ -16,7 +16,7 @@ Feature: Api testing
     Then response status is <status>
     And response key:body contains <body>
     And response key:title contains <title>
-    And response key:userId contains <user_id>
+    And response key:userID contains <user_id>
     Examples: Data
       | title   | body      | user_id | status |
       | title1  | body1     | 1       | 201    |

@@ -11,14 +11,6 @@ public class ApiSteps {
     Response response;
     typicodeAPI api = new typicodeAPI();
 
-    @Before
-    public void beforeStep() {
-    }
-
-    @After
-    public void afterStep() {
-    }
-
     @When("I send post request")
     public void iSendPostRequest() {
         response = api.post();

@@ -18,24 +18,24 @@ public class Calendar_test {
     @Test
     void test_toString() {
         String result = "[[09:00, 10:30], [12:00, 13:00], [16:00, 18:00]] / [09:00, 20:00]";
-        Assertions.assertEquals(result, calendar1.toString(), "Not equal");
+        assertEquals(result, calendar1.toString(), "Not equal");
     }
 
     @Test
     void test_calendarCreation() {
-        Assertions.assertEquals(calendar1.toString(),calendar2.toString(), "Not equal");
+        assertEquals(calendar1.toString(),calendar2.toString(), "Not equal");
     }
 
     @Test
     void test_calendarEquality() {
-        Assertions.assertEquals(calendar2, calendar1, "Not equal");
-        Assertions.assertEquals(calendar1.getCalendar(), calendar2.getCalendar(), "Not equal" );
+        assertEquals(calendar2, calendar1, "Not equal");
+        assertEquals(calendar1.getCalendar(), calendar2.getCalendar(), "Not equal" );
     }
 
     @Test
     void test_calendarMerge() {
         Calendar result = new Calendar("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00","10:00-18:30");
-        Assertions.assertEquals(calendar3.mergeWithCalendar(calendar4).toString(), result.toString(),"Not equal");
+        assertEquals(calendar3.mergeWithCalendar(calendar4).toString(), result.toString(),"Not equal");
     }
 
     @Test
@@ -50,15 +50,15 @@ public class Calendar_test {
         Calendar cal1 = new Calendar("09:00-10:30,11:00-13:00,16:00-18:00",
                 "09:00-20:00");
 
-        Assertions.assertEquals(cal1.getPrettyTime(),
+        assertEquals(cal1.getPrettyTime(),
                 "[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]", "Not equal");
-        Assertions.assertEquals(cal1.getPrettyTime(30),
+        assertEquals(cal1.getPrettyTime(30),
                 "[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]", "Not equal");
-        Assertions.assertEquals(cal1.getPrettyTime(60),
+        assertEquals(cal1.getPrettyTime(60),
                 "[[13:00, 16:00], [18:00, 20:00]]", "Not equal");
-        Assertions.assertEquals(cal1.getPrettyTime(121),
+        assertEquals(cal1.getPrettyTime(121),
                 "[[13:00, 16:00]]", "Not equal");
-        Assertions.assertEquals(cal1.getPrettyTime(181),
+        assertEquals(cal1.getPrettyTime(181),
                 "[]", "Not equal");
     }
     
