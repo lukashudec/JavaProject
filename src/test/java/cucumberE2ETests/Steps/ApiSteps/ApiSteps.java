@@ -1,10 +1,12 @@
 package cucumberE2ETests.Steps.ApiSteps;
 
 import cucumberE2ETests.api.typicodeAPI;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ApiSteps {
@@ -23,17 +25,17 @@ public class ApiSteps {
 
     @Then("response status is {}")
     public void responseStatusIsStatus(String input) {
-        assertEquals(Integer.parseInt(input),response.getStatusCode());
+        assertEquals(Integer.parseInt(input), response.getStatusCode());
     }
 
     @And("response key:{} contains {}")
-    public void responseContainsKeyEqualTo(String key,String input) {
+    public void responseContainsKeyEqualTo(String key, String input) {
         assertNotNull(response.getBody().jsonPath().getString(key));
-        assertTrue(api.getValueFromBody(key,input));
+        assertTrue(api.getValueFromBody(key, input));
     }
 
     @Given("title:{}, body:{}, userId:{}")
     public void titleTitleBodyBodyUserIdUser_id(String title, String body, String userId) {
-        api.preparePost(title,body,userId);
+        api.preparePost(title, body, userId);
     }
 }

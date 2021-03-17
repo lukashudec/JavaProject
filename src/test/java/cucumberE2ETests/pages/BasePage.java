@@ -6,13 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
-    public BasePage(WebDriver driver){
+    protected WebDriver driver;
+    protected String root;
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    protected WebDriver driver;
-    protected String root;
 
     public BasePage go() {
         driver.get(root);

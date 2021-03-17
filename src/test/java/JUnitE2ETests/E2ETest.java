@@ -1,20 +1,25 @@
 package JUnitE2ETests;
 
-import cucumberE2ETests.pages.*;
+import cucumberE2ETests.pages.FaqPage;
+import cucumberE2ETests.pages.GeekSearchResultPage;
+import cucumberE2ETests.pages.MainPage;
+import cucumberE2ETests.pages.SignInPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class E2ETest {
     WebDriver driver = null;
 
     @BeforeEach
     public void beforeStep() {
-        System.setProperty("webdriver.chrome.driver","C:/Users/lenovo/Downloads/chromedriver_win32_89/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:/Users/lenovo/Downloads/chromedriver_win32_89/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
@@ -52,7 +57,7 @@ public class E2ETest {
         assertTrue(page2.isDisplayed());
         assertTrue(page2.passwordDisplayed());
         assertTrue(page2.usernameDisplayed());
-        page2.signIn("name","pass");
+        page2.signIn("name", "pass");
         assertTrue(true);
     }
 
@@ -70,7 +75,6 @@ public class E2ETest {
         page.search("API");
         assertNotNull(page.checkResultTable("BGG_XML_API2"));
     }
-
 
 
 }

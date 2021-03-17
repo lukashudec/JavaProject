@@ -7,10 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class BoardGameBasePage extends BasePage {
 
-    public BoardGameBasePage(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(name = "searchTerm")
     protected WebElement search_bar;
     @FindBy(linkText = "Sign In")
@@ -19,6 +15,10 @@ public class BoardGameBasePage extends BasePage {
     protected WebElement helpDropdown;
     @FindBy(linkText = "FAQ")
     protected WebElement faqButton;
+
+    public BoardGameBasePage(WebDriver driver) {
+        super(driver);
+    }
 
     public BoardGameBasePage clickOnHelp() {
         helpDropdown.click();

@@ -1,4 +1,5 @@
 Feature: Web test
+
   Scenario Outline: Test search for game, check if picture and link are shown properly
     Given I am on the main page
     When I enter search term: <game_name>

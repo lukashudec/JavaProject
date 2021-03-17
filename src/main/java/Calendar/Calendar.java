@@ -1,7 +1,6 @@
 package Calendar;
 
 import java.util.*;
-import java.util.ArrayList;
 
 public class Calendar {
     List<String[]> rawCalendar;
@@ -15,7 +14,24 @@ public class Calendar {
     }
 
     public Calendar(String rawCalendar, String bounds) {
-        this(getTime(rawCalendar),getTime(bounds).get(0));
+        this(getTime(rawCalendar), getTime(bounds).get(0));
+    }
+
+    public static List<String[]> getTime(String stringTime) {
+        ArrayList<String[]> result = new ArrayList<>();
+        for (String time_frame : stringTime.split(",")) {
+            result.add(time_frame.split("-"));
+        }
+        return result;
+    }
+
+    public static String formatTime(int time) {
+        String timeString = String.valueOf(time);
+        return (timeString.length() == 1) ? '0' + timeString : timeString;
+    }
+
+    public static String comp(String a, String b, int i) {
+        return (a.compareTo(b) == i) ? a : b;
     }
 
     @Override
@@ -23,7 +39,7 @@ public class Calendar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Calendar calendar2 = (Calendar) o;
-        return this.hashCode()==calendar2.hashCode();
+        return this.hashCode() == calendar2.hashCode();
     }
 
     @Override
@@ -91,27 +107,10 @@ public class Calendar {
     public String getPrettyTime(int minDuration) {
         List<String[]> result = new ArrayList<>();
         for (Integer[] i : this.getFreeTime(minDuration)) {
-            result.add(new String[]{formatTime(i[0]/60)+ ':' + formatTime(i[0]% 60),
-                    formatTime(i[1]/60)+ ':' + formatTime(i[1]% 60)});
+            result.add(new String[]{formatTime(i[0] / 60) + ':' + formatTime(i[0] % 60),
+                    formatTime(i[1] / 60) + ':' + formatTime(i[1] % 60)});
         }
         return Arrays.deepToString(result.toArray());
-    }
-
-    public static List<String[]> getTime(String stringTime) {
-        ArrayList<String[]> result = new ArrayList<>();
-        for (String time_frame : stringTime.split(",")) {
-            result.add(time_frame.split("-"));
-        }
-        return result;
-    }
-
-    public static String formatTime(int time) {
-        String timeString = String.valueOf(time);
-        return (timeString.length()==1) ? '0'+timeString : timeString;
-    }
-
-    public static String comp(String a, String b, int i) {
-        return (a.compareTo(b) == i) ? a : b;
     }
 }
 

@@ -4,11 +4,15 @@ import Calendar.Calendar;
 import cucumberUnitTests.utility.Entry;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UnitSteps {
 
@@ -16,8 +20,8 @@ public class UnitSteps {
     Calendar result;
 
     @Before()
-    public void beforeEach(){
-    assertEquals(0, listOfCalendars.size());
+    public void beforeEach() {
+        assertEquals(0, listOfCalendars.size());
     }
 
     @When("merging calendars")
@@ -27,7 +31,7 @@ public class UnitSteps {
 
     @Then("result is")
     public void resultIs(DataTable table) {
-        Entry entry = new Entry(table,true);
+        Entry entry = new Entry(table, true);
         Calendar expected_result = new Calendar(entry.getRow(0).get(0), entry.getRow(0).get(1));
         assertEquals(expected_result, result);
     }
@@ -40,7 +44,7 @@ public class UnitSteps {
 
     @Then("free time is {}")
     public void freeTimeIs(String freeTime) {
-        assertEquals(freeTime,listOfCalendars.get(0).getPrettyTime());
+        assertEquals(freeTime, listOfCalendars.get(0).getPrettyTime());
     }
 
 
@@ -53,15 +57,15 @@ public class UnitSteps {
 
     @Given("calendars")
     public void calendars(DataTable table) {
-        Entry entry = new Entry(table,true);
+        Entry entry = new Entry(table, true);
         for (List<String> l : entry.data) {
-            listOfCalendars.add(new Calendar(l.get(0),l.get(1)));
+            listOfCalendars.add(new Calendar(l.get(0), l.get(1)));
         }
     }
 
     @Given("calendar {} with {}")
     public void calendarsCalendarWithBounds(String calendar, String bounds) {
-        listOfCalendars.add(new Calendar(calendar,bounds));
+        listOfCalendars.add(new Calendar(calendar, bounds));
     }
 
     @Then("different creations are equal")
@@ -74,7 +78,7 @@ public class UnitSteps {
 
     @Then("getCalendar is {}")
     public void getCalendar(String s) {
-        assertEquals(s,listOfCalendars.get(0).getCalendar());
+        assertEquals(s, listOfCalendars.get(0).getCalendar());
     }
 
 }

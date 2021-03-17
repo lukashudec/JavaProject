@@ -8,11 +8,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class FaqPage extends BoardGameBasePage {
 
-    public FaqPage(WebDriver driver) {
-        super(driver);
-        root = "https://www.boardgamegeek.com/wiki/page/BoardGameGeek_FAQ";
-    }
-
     @FindBy(id = "wiki-search")
     protected WebElement helpSearch;
     @FindBy(name = "B1")
@@ -21,6 +16,11 @@ public class FaqPage extends BoardGameBasePage {
     protected WebElement forumTable;
     @FindBy(xpath = "//a[@href='/wiki/page/BoardGameGeek_FAQ']")
     protected WebElement faqArticle;
+
+    public FaqPage(WebDriver driver) {
+        super(driver);
+        root = "https://www.boardgamegeek.com/wiki/page/BoardGameGeek_FAQ";
+    }
 
     public void search(String input) {
         helpSearch.sendKeys(input + Keys.ENTER);

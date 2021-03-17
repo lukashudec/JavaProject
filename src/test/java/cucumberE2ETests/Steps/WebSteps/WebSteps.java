@@ -1,17 +1,24 @@
 package cucumberE2ETests.Steps.WebSteps;
 
-import cucumberE2ETests.pages.*;
+import cucumberE2ETests.pages.FaqPage;
+import cucumberE2ETests.pages.GeekSearchResultPage;
+import cucumberE2ETests.pages.MainPage;
+import cucumberE2ETests.pages.SignInPage;
 import cucumberE2ETests.utility.Entry;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.*;
-import org.openqa.selenium.Keys;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WebSteps {
 
@@ -19,7 +26,7 @@ public class WebSteps {
 
     @Before
     public void beforeStep() {
-        System.setProperty("webdriver.chrome.driver","C:/Users/lenovo/Downloads/chromedriver_win32_89/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:/Users/lenovo/Downloads/chromedriver_win32_89/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
@@ -67,9 +74,11 @@ public class WebSteps {
     @And("it contains field {}")
     public void itContainsFieldUsername(String field) {
         if (field.contentEquals("username")) {
-            assertTrue(new SignInPage(driver).usernameDisplayed()); }
+            assertTrue(new SignInPage(driver).usernameDisplayed());
+        }
         if (field.contentEquals("password")) {
-            assertTrue(new SignInPage(driver).passwordDisplayed()); }
+            assertTrue(new SignInPage(driver).passwordDisplayed());
+        }
     }
 
 
