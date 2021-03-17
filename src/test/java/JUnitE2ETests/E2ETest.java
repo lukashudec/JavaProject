@@ -36,10 +36,10 @@ public class E2ETest {
     When I enter search term: Prophecy
     Then Search results for link: Prophecy should appear
     And Search results for image: Prophecy should appear */
-        MainPage page = (MainPage) new MainPage(driver).go();
-        GeekSearchResultPage page2 = page.searchGames("Prophecy");
-        assertNotEquals(0, page2.getGameImage("Prophecy").size());
-        assertNotEquals(0, page2.getGameLink("Prophecy").size());
+        MainPage mainPage = (MainPage) new MainPage(driver).go();
+        GeekSearchResultPage searchResultPage = mainPage.searchGames("Prophecy");
+        assertNotEquals(0, searchResultPage.getGameImage("Prophecy").size());
+        assertNotEquals(0, searchResultPage.getGameLink("Prophecy").size());
     }
 
     @Test
@@ -52,12 +52,12 @@ public class E2ETest {
     And it contains field password
     When I enter name and pass
     Then nothing */
-        MainPage page = (MainPage) new MainPage(driver).go();
-        SignInPage page2 = page.clickOnSignIn();
-        assertTrue(page2.isDisplayed());
-        assertTrue(page2.passwordDisplayed());
-        assertTrue(page2.usernameDisplayed());
-        page2.signIn("name", "pass");
+        MainPage mainPage = (MainPage) new MainPage(driver).go();
+        SignInPage signPage = mainPage.clickOnSignIn();
+        assertTrue(signPage.isDisplayed());
+        assertTrue(signPage.passwordDisplayed());
+        assertTrue(signPage.usernameDisplayed());
+        signPage.signIn("name", "pass");
         assertTrue(true);
     }
 
@@ -69,11 +69,11 @@ public class E2ETest {
     And BoardGameGeek FAQ article is present
     When I search for API
     Then List of results with BGG_XML_API2 is shown */
-        FaqPage page = (FaqPage) new FaqPage(driver).go();
-        assertTrue(page.searchDisplayed());
-        assertTrue(page.articleDisplayed());
-        page.search("API");
-        assertNotNull(page.checkResultTable("BGG_XML_API2"));
+        FaqPage faqPage = (FaqPage) new FaqPage(driver).go();
+        assertTrue(faqPage.searchDisplayed());
+        assertTrue(faqPage.articleDisplayed());
+        faqPage.search("API");
+        assertNotNull(faqPage.checkResultTable("BGG_XML_API2"));
     }
 
 
