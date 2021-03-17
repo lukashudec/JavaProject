@@ -1,6 +1,6 @@
 Feature: Web test
   Scenario Outline: Test search for game, check if picture and link are shown properly
-    Given I am on the home page
+    Given I am on the main page
     When I enter search term: <game_name>
     Then Search results for link: <game_name> should appear
     And Search results for image: <game_name> should appear
@@ -11,7 +11,7 @@ Feature: Web test
       | Terraforming Mars |
 
   Scenario: Test if sign in is available and it contains field username and password
-    Given I am on the home page
+    Given I am on the main page
     When I click on Sign in button
     Then popup is shown
     And it contains field username

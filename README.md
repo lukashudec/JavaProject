@@ -9,8 +9,13 @@ Reasons for this project
 ## cucumberUnitTests
 * example of BDD unit tests with cucumber and JUnit
 ## cucumberE2ETests
+* BDD tests
 * web tests using selenium webDriver and api tests using RestAssured
 * cucmber + JUnit (runner)
+## JUnitE2ETests
+* classic E2E web tests using selenium webDriver
+* selenium + JUnit
+* to better understand / show PageObjectModel (BDD tests should not be used for web testing)
 ## unitTests
 * unit tests for calendar.py using JUnit
 ## locustTests

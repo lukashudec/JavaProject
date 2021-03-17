@@ -7,7 +7,6 @@ import io.restassured.specification.FilterableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 import java.util.HashMap;
 import java.util.Map;
-import io.restassured.filter.log.RequestLoggingFilter;
 
 public class typicodeAPI {
      String API_ENDPOINT = "https://jsonplaceholder.typicode.com";

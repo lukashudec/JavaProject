@@ -6,16 +6,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
-    public WebDriver driver;
-    protected String root;
-
     public BasePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void go() {
+    protected WebDriver driver;
+    protected String root;
+
+    public BasePage go() {
         driver.get(root);
+        return this;
     }
 
     public WebElement find(By element) {

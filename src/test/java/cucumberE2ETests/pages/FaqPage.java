@@ -1,6 +1,7 @@
 package cucumberE2ETests.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,15 +14,27 @@ public class FaqPage extends BoardGameBasePage {
     }
 
     @FindBy(id = "wiki-search")
-    public WebElement helpSearch;
+    protected WebElement helpSearch;
     @FindBy(name = "B1")
-    public WebElement helpSearchButton;
+    protected WebElement helpSearchButton;
     @FindBy(xpath = "//table[@class='forum_table']")
-    public WebElement forumTable;
+    protected WebElement forumTable;
     @FindBy(xpath = "//a[@href='/wiki/page/BoardGameGeek_FAQ']")
-    public WebElement faqArticle;
+    protected WebElement faqArticle;
+
+    public void search(String input) {
+        helpSearch.sendKeys(input + Keys.ENTER);
+    }
 
     public WebElement checkResultTable(String searchResult) {
         return forumTable.findElement(By.xpath("//a[@href='/wiki/page/" + searchResult + "']"));
+    }
+
+    public boolean searchDisplayed() {
+        return helpSearch.isDisplayed();
+    }
+
+    public boolean articleDisplayed() {
+        return faqArticle != null;
     }
 }

@@ -11,14 +11,26 @@ public class SignInPage extends BasePage {
     }
 
     @FindBy(xpath = "//form[@name='loginform']")
-    public WebElement loginForm;
+    protected WebElement loginForm;
     @FindBy(id = "inputUsername")
-    public WebElement username;
+    protected WebElement username;
     @FindBy(id = "inputPassword")
-    public WebElement password;
+    protected WebElement password;
 
     public void signIn(String username, String password) {
         this.username.sendKeys(username);
         this.password.sendKeys(password);
+    }
+
+    public boolean isDisplayed() {
+        return loginForm.isDisplayed();
+    }
+
+    public boolean usernameDisplayed() {
+        return username.isDisplayed();
+    }
+
+    public boolean passwordDisplayed() {
+        return password.isDisplayed();
     }
 }

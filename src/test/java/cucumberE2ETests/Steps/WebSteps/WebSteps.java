@@ -19,104 +19,89 @@ public class WebSteps {
 
     @Before
     public void beforeStep() {
-        System.setProperty("webdriver.chrome.driver","C:/Users/lenovo/Downloads/chromedriver_win32_87/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:/Users/lenovo/Downloads/chromedriver_win32_89/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
     }
+
     @After
     public void afterStep() {
         driver.quit();
-
     }
 
     @Given("I am on the {} page")
     public void iAmOnTheHomepage(String input) {
-        if (input.contentEquals("home")) {
-        MainPage page = new MainPage(driver);
-        page.go();}
+        if (input.contentEquals("main")) {
+            new MainPage(driver).go();
+        }
         if (input.contentEquals("FAQ")) {
-            FaqPage page = new FaqPage(driver);
-            page.go();}
-
+            new FaqPage(driver).go();
+        }
     }
 
     @When("I enter search term: {}")
     public void iEnterSearchTermGame_name(String search) {
-        MainPage page = new MainPage(driver);
-        page.search(search);
+        new MainPage(driver).searchGames(search);
     }
 
     @Then("Search results for link: {} should appear")
     public void searchResultsForLink_textGame_nameShouldAppear(String input) {
-        GeekSearchResultPage page = new GeekSearchResultPage(driver);
-        assertNotEquals(0, page.getGameLink(input).size());
-        
+        assertNotEquals(0, new GeekSearchResultPage(driver).getGameLink(input).size());
     }
 
     @And("Search results for image: {} should appear")
     public void searchResultsForXpathImgAltBoardGameGame_nameShouldAppear(String input) {
-        GeekSearchResultPage page = new GeekSearchResultPage(driver);
-        assertNotEquals(0, page.getGameLink(input).size());
+        assertNotEquals(0, new GeekSearchResultPage(driver).getGameLink(input).size());
     }
 
     @When("I click on Sign in button")
     public void iClickOnSignInButton() {
-        MainPage page = new MainPage(driver);
-        page.clickOnSignIn();
+        new MainPage(driver).clickOnSignIn();
     }
 
     @Then("popup is shown")
     public void popupIsShown() {
-        SignInPage page = new SignInPage(driver);
-        assertNotNull(page.loginForm);
-        
+        assertTrue(new SignInPage(driver).isDisplayed());
     }
 
     @And("it contains field {}")
     public void itContainsFieldUsername(String field) {
-        SignInPage page = new SignInPage(driver);
         if (field.contentEquals("username")) {
-        assertNotNull(page.username); }
+            assertTrue(new SignInPage(driver).usernameDisplayed()); }
         if (field.contentEquals("password")) {
-            assertNotNull(page.password); }
+            assertTrue(new SignInPage(driver).passwordDisplayed()); }
     }
 
 
     @Then("nothing")
     public void nothing() {
-        assertEquals(0,0);
+        assertTrue(true);
     }
 
     @When("I enter username and password")
     public void iEnterUsernameAndPassword(DataTable table) {
         Entry entry = new Entry(table, true);
-        SignInPage page = new SignInPage(driver);
-        page.signIn(entry.getRow(0).get(0), entry.getRow(0).get(1) );
+        new SignInPage(driver).signIn(entry.getRow(0).get(0), entry.getRow(0).get(1));
     }
 
     @Then("search box is present")
     public void searchBoxIsPresent() {
-        FaqPage page = new FaqPage(driver);
-        assertNotNull(page.helpSearch);
+        assertTrue(new FaqPage(driver).searchDisplayed());
     }
 
     @And("BoardGameGeek FAQ article is present")
-    public void boardgamegeekFAQArticleIsPresent() {
-        FaqPage page = new FaqPage(driver);
-        assertNotNull(page.faqArticle);
+    public void boardGameGeekFAQArticleIsPresent() {
+        assertTrue(new FaqPage(driver).articleDisplayed());
     }
 
     @When("I search for {}")
     public void iSearchForSearch_option(String input) {
-        FaqPage page = new FaqPage(driver);
-        page.helpSearch.sendKeys(input + Keys.ENTER);
+        new FaqPage(driver).search(input);
     }
 
     @Then("List of results with {} is shown")
     public void listOfResultsWithSearch_resultIsShown(String input) {
-        FaqPage page = new FaqPage(driver);
-        page.checkResultTable(input);
+        new FaqPage(driver).checkResultTable(input);
     }
 
 }

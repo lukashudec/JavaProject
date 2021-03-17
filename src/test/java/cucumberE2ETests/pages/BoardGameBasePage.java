@@ -10,14 +10,15 @@ public class BoardGameBasePage extends BasePage {
     public BoardGameBasePage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(name = "searchTerm")
-    WebElement search_bar;
+    protected WebElement search_bar;
     @FindBy(linkText = "Sign In")
-    WebElement signInButton;
+    protected WebElement signInButton;
     @FindBy(xpath = "//button[contains(.,'Help ')]")
-    WebElement helpDropdown;
+    protected WebElement helpDropdown;
     @FindBy(linkText = "FAQ")
-    WebElement faqButton;
+    protected WebElement faqButton;
 
     public BoardGameBasePage clickOnHelp() {
         helpDropdown.click();
@@ -34,7 +35,7 @@ public class BoardGameBasePage extends BasePage {
         return new SignInPage(driver);
     }
 
-    public GeekSearchResultPage search(String input) {
+    public GeekSearchResultPage searchGames(String input) {
         search_bar.sendKeys(input + Keys.ENTER);
         return new GeekSearchResultPage(driver);
     }
