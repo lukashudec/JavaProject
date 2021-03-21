@@ -1,6 +1,6 @@
 package cucumberUnitTests.Steps;
 
-import Calendar.Calendar;
+import calendar.CalendarClass;
 import cucumberUnitTests.utility.Entry;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UnitSteps {
 
-    List<Calendar> listOfCalendars = new ArrayList<>();
-    Calendar result;
+    List<CalendarClass> listOfCalendars = new ArrayList<>();
+    CalendarClass result;
 
     @Before()
     public void beforeEach() {
@@ -32,7 +32,7 @@ public class UnitSteps {
     @Then("result is")
     public void resultIs(DataTable table) {
         Entry entry = new Entry(table, true);
-        Calendar expected_result = new Calendar(entry.getRow(0).get(0), entry.getRow(0).get(1));
+        CalendarClass expected_result = new CalendarClass(entry.getRow(0).get(0), entry.getRow(0).get(1));
         assertEquals(expected_result, result);
     }
 
@@ -50,7 +50,7 @@ public class UnitSteps {
 
     @Then("toString returns {}")
     public void toStringReturns(String result) {
-        for (Calendar cal : listOfCalendars) {
+        for (CalendarClass cal : listOfCalendars) {
             assertEquals(result, cal.toString());
         }
     }
@@ -59,13 +59,13 @@ public class UnitSteps {
     public void calendars(DataTable table) {
         Entry entry = new Entry(table, true);
         for (List<String> l : entry.data) {
-            listOfCalendars.add(new Calendar(l.get(0), l.get(1)));
+            listOfCalendars.add(new CalendarClass(l.get(0), l.get(1)));
         }
     }
 
     @Given("calendar {} with {}")
     public void calendarsCalendarWithBounds(String calendar, String bounds) {
-        listOfCalendars.add(new Calendar(calendar, bounds));
+        listOfCalendars.add(new CalendarClass(calendar, bounds));
     }
 
     @Then("different creations are equal")

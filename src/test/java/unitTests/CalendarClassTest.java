@@ -1,6 +1,6 @@
 package unitTests;
 
-import Calendar.Calendar;
+import calendar.CalendarClass;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,12 +9,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Calendar_test {
-    Calendar calendar1 = new Calendar(new ArrayList<>(List.of
+class CalendarClassTest {
+    CalendarClass calendar1 = new CalendarClass(new ArrayList<>(List.of
             (new String[]{"09:00", "10:30"}, new String[]{"12:00", "13:00"}, new String[]{"16:00", "18:00"})), new String[]{"09:00", "20:00"});
-    Calendar calendar2 = new Calendar("09:00-10:30,12:00-13:00,16:00-18:00", "09:00-20:00");
-    Calendar calendar3 = new Calendar("12:00-13:00,16:00-18:00", "09:00-20:00");
-    Calendar calendar4 = new Calendar("10:00-11:45,12:30-14:30", "10:00-18:30");
+    CalendarClass calendar2 = new CalendarClass("09:00-10:30,12:00-13:00,16:00-18:00", "09:00-20:00");
+    CalendarClass calendar3 = new CalendarClass("12:00-13:00,16:00-18:00", "09:00-20:00");
+    CalendarClass calendar4 = new CalendarClass("10:00-11:45,12:30-14:30", "10:00-18:30");
 
     @Test
     void test_toString() {
@@ -35,7 +35,7 @@ public class Calendar_test {
 
     @Test
     void test_calendarMerge() {
-        Calendar result = new Calendar("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00", "10:00-18:30");
+        CalendarClass result = new CalendarClass("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00", "10:00-18:30");
         assertEquals(calendar3.mergeWithCalendar(calendar4).toString(), result.toString(), "Not equal");
     }
 
@@ -48,19 +48,14 @@ public class Calendar_test {
 
     @Test
     void test_calendarGetFreeTimeWithParam() {
-        Calendar cal1 = new Calendar("09:00-10:30,11:00-13:00,16:00-18:00",
+        CalendarClass cal1 = new CalendarClass("09:00-10:30,11:00-13:00,16:00-18:00",
                 "09:00-20:00");
 
-        assertEquals(cal1.getPrettyTime(),
-                "[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]", "Not equal");
-        assertEquals(cal1.getPrettyTime(30),
-                "[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]", "Not equal");
-        assertEquals(cal1.getPrettyTime(60),
-                "[[13:00, 16:00], [18:00, 20:00]]", "Not equal");
-        assertEquals(cal1.getPrettyTime(121),
-                "[[13:00, 16:00]]", "Not equal");
-        assertEquals(cal1.getPrettyTime(181),
-                "[]", "Not equal");
+        assertEquals("[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]",cal1.getPrettyTime(), "Not equal");
+        assertEquals("[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]",cal1.getPrettyTime(30), "Not equal");
+        assertEquals("[[13:00, 16:00], [18:00, 20:00]]",cal1.getPrettyTime(60), "Not equal");
+        assertEquals("[[13:00, 16:00]]",cal1.getPrettyTime(121), "Not equal");
+        assertEquals("[]", cal1.getPrettyTime(181), "Not equal");
     }
 
 }

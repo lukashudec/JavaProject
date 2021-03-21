@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class E2ETest {
+class E2ETest {
     WebDriver driver = null;
 
     @BeforeEach

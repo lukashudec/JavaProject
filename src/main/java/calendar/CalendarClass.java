@@ -1,19 +1,19 @@
-package Calendar;
+package calendar;
 
 import java.util.*;
 
-public class Calendar {
+public class CalendarClass {
     List<String[]> rawCalendar;
     String[] bounds;
     List<Integer[]> calendar;
 
-    public Calendar(List<String[]> rawCalendar, String[] bounds) {
+    public CalendarClass(List<String[]> rawCalendar, String[] bounds) {
         this.rawCalendar = rawCalendar;
         this.bounds = bounds;
         this.calendar = formatInput();
     }
 
-    public Calendar(String rawCalendar, String bounds) {
+    public CalendarClass(String rawCalendar, String bounds) {
         this(getTime(rawCalendar), getTime(bounds).get(0));
     }
 
@@ -38,7 +38,7 @@ public class Calendar {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Calendar calendar2 = (Calendar) o;
+        CalendarClass calendar2 = (CalendarClass) o;
         return this.hashCode() == calendar2.hashCode();
     }
 
@@ -56,22 +56,21 @@ public class Calendar {
         return Arrays.deepToString(calendar.toArray());
     }
 
-    public Calendar mergeWithCalendar(Calendar cal2) {
+    public CalendarClass mergeWithCalendar(CalendarClass cal2) {
         List<String[]> newCalendar = this.rawCalendar;
-        String[] bounds = this.bounds;
         newCalendar.addAll(cal2.rawCalendar);
         String[] newBounds = {comp(bounds[0], cal2.bounds[0], 1), comp(bounds[1], cal2.bounds[1], -1)};
-        newCalendar.sort(Comparator.comparing(o -> ((String[]) o)[0]));
-        return new Calendar(newCalendar, newBounds);
+        newCalendar.sort(Comparator.comparing(o -> (o)[0]));
+        return new CalendarClass(newCalendar, newBounds);
     }
 
     public List<Integer[]> formatInput() {
-        List<String[]> calendar = new ArrayList<>();
+        List<String[]> tempCalendar = new ArrayList<>();
         List<Integer[]> result = new ArrayList<>();
-        calendar.add(new String[]{"00:00", bounds[0]});
-        calendar.addAll(rawCalendar);
-        calendar.add(new String[]{bounds[1], "00:00"});
-        for (String[] s : calendar) {
+        tempCalendar.add(new String[]{"00:00", bounds[0]});
+        tempCalendar.addAll(rawCalendar);
+        tempCalendar.add(new String[]{bounds[1], "00:00"});
+        for (String[] s : tempCalendar) {
             String[] timeFrom = s[0].split(":");
             String[] timeTo = s[1].split(":");
             result.add(new Integer[]{Integer.parseInt(timeFrom[0]) * 60 + Integer.parseInt(timeFrom[1]),
@@ -96,7 +95,7 @@ public class Calendar {
         return result;
     }
 
-    public List<Integer[]> getPossibleEvents(Calendar cal2, int minDuration) {
+    public List<Integer[]> getPossibleEvents(CalendarClass cal2, int minDuration) {
         return this.mergeWithCalendar(cal2).getFreeTime(minDuration);
     }
 
