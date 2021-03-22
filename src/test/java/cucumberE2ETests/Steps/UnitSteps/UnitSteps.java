@@ -19,11 +19,6 @@ public class UnitSteps {
     List<CalendarClass> listOfCalendars = new ArrayList<>();
     CalendarClass result;
 
-    @Before()
-    public void beforeEach() {
-        assertEquals(0, listOfCalendars.size());
-    }
-
     @When("merging calendars")
     public void mergingCalendars() {
         result = listOfCalendars.get(0).mergeWithCalendar(listOfCalendars.get(1));

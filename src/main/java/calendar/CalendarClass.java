@@ -59,9 +59,8 @@ public class CalendarClass {
     public CalendarClass mergeWithCalendar(CalendarClass cal2) {
         List<String[]> newCalendar = this.rawCalendar;
         newCalendar.addAll(cal2.rawCalendar);
-        String[] newBounds = {comp(bounds[0], cal2.bounds[0], 1), comp(bounds[1], cal2.bounds[1], -1)};
         newCalendar.sort(Comparator.comparing(o -> (o)[0]));
-        return new CalendarClass(newCalendar, newBounds);
+        return new CalendarClass(newCalendar, new String[]{comp(bounds[0], cal2.bounds[0], 1), comp(bounds[1], cal2.bounds[1], -1)});
     }
 
     public List<Integer[]> formatInput() {
