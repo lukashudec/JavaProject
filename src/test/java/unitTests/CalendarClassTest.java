@@ -51,10 +51,10 @@ class CalendarClassTest {
         CalendarClass cal1 = new CalendarClass("09:00-10:30,11:00-13:00,16:00-18:00",
                 "09:00-20:00");
 
-        assertEquals("[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]",cal1.getPrettyTime(), "Not equal");
-        assertEquals("[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]",cal1.getPrettyTime(30), "Not equal");
-        assertEquals("[[13:00, 16:00], [18:00, 20:00]]",cal1.getPrettyTime(60), "Not equal");
-        assertEquals("[[13:00, 16:00]]",cal1.getPrettyTime(121), "Not equal");
+        assertEquals("[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]", cal1.getPrettyTime(), "Not equal");
+        assertEquals("[[10:30, 11:00], [13:00, 16:00], [18:00, 20:00]]", cal1.getPrettyTime(30), "Not equal");
+        assertEquals("[[13:00, 16:00], [18:00, 20:00]]", cal1.getPrettyTime(60), "Not equal");
+        assertEquals("[[13:00, 16:00]]", cal1.getPrettyTime(121), "Not equal");
         assertEquals("[]", cal1.getPrettyTime(181), "Not equal");
     }
 

@@ -6,17 +6,18 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.FilterableRequestSpecification;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class typicodeAPI {
+    public Response response;
+    public FilterableRequestSpecification request = (FilterableRequestSpecification) new RequestSpecBuilder().build();
     String API_ENDPOINT = "https://jsonplaceholder.typicode.com";
     String GET_POSTS = "/posts/";
     String POST_POSTS = "/posts/";
-    public Response response;
-    public FilterableRequestSpecification request = (FilterableRequestSpecification) new RequestSpecBuilder().build();
 
     @When("I request post with id:{}")
     public Response get(String input) {

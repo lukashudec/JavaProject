@@ -5,8 +5,10 @@ import cucumberE2ETests.utility.ManagedDriver;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class GeekSearchResultPage extends BasePage {
 

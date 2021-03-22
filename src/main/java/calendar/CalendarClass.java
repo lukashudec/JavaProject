@@ -70,8 +70,8 @@ public class CalendarClass {
         tempCalendar.addAll(rawCalendar);
         tempCalendar.add(new String[]{bounds[1], "00:00"});
         for (String[] s : tempCalendar) {
-            int [] timeFrom = Arrays.stream(s[0].split(":")).mapToInt(Integer::parseInt).toArray();
-            int [] timeTo = Arrays.stream(s[1].split(":")).mapToInt(Integer::parseInt).toArray();
+            int[] timeFrom = Arrays.stream(s[0].split(":")).mapToInt(Integer::parseInt).toArray();
+            int[] timeTo = Arrays.stream(s[1].split(":")).mapToInt(Integer::parseInt).toArray();
             result.add(new Integer[]{timeFrom[0] * 60 + timeFrom[1], timeTo[0] * 60 + timeTo[1]});
         }
         return result;
