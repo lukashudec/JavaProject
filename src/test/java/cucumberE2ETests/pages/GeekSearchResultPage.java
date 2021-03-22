@@ -1,15 +1,17 @@
 package cucumberE2ETests.pages;
 
+
+import cucumberE2ETests.utility.ManagedDriver;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GeekSearchResultPage extends MainPage {
+public class GeekSearchResultPage extends BasePage {
 
-    public GeekSearchResultPage(WebDriver driver) {
-        super(driver);
+    public GeekSearchResultPage(ManagedDriver managedDriver) {
+        super(managedDriver);
     }
 
     public List<WebElement> getGameLink(String input) {
@@ -20,11 +22,13 @@ public class GeekSearchResultPage extends MainPage {
         return driver.findElements(By.xpath("//img[@alt='Board Game: " + input + "']"));
     }
 
+    @Then("Search results for link: {} should appear")
     public GeekSearchResultPage isGameLinkFound(String input) {
         assertNotEquals(0, getGameLink(input).size());
         return this;
     }
 
+    @Then("Search results for image: {} should appear")
     public GeekSearchResultPage isGameImageFound(String input) {
         assertNotEquals(0, getGameImage(input).size());
         return this;

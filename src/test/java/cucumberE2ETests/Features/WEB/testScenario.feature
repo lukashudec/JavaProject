@@ -20,7 +20,6 @@ Feature: Web test
     When I enter username and password
       | username | password |
       | name     | pass     |
-    Then nothing
 
   Scenario Outline: Test FAQ page and searching
     Given I am on the FAQ page

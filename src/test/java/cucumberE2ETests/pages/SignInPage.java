@@ -1,6 +1,10 @@
 package cucumberE2ETests.pages;
 
-import org.openqa.selenium.WebDriver;
+import cucumberE2ETests.utility.Entry;
+import cucumberE2ETests.utility.ManagedDriver;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -15,25 +19,35 @@ public class SignInPage extends BasePage {
     @FindBy(id = "inputPassword")
     protected WebElement password;
 
-    public SignInPage(WebDriver driver) {
-        super(driver);
+    public SignInPage(ManagedDriver managedDriver) {
+        super(managedDriver);
     }
+
 
     public void signIn(String username, String password) {
         this.username.sendKeys(username);
         this.password.sendKeys(password);
     }
 
+    @When("I enter username and password")
+    public void signIn(DataTable table) {
+        Entry entry = new Entry(table, true);
+        signIn(entry.getRow(0).get(0), entry.getRow(0).get(1));
+    }
+
+    @Then("popup is shown")
     public SignInPage isFormDisplayed() {
         assertTrue(loginForm.isDisplayed());
         return this;
     }
 
+    @Then("it contains field username")
     public SignInPage isUsernameDisplayed() {
         assertTrue(username.isDisplayed());
         return this;
     }
 
+    @Then("it contains field password")
     public SignInPage isPasswordDisplayed() {
         assertTrue(password.isDisplayed());
         return this;

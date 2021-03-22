@@ -1,7 +1,9 @@
 package cucumberE2ETests.pages;
 
+import cucumberE2ETests.utility.ManagedDriver;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,14 +18,19 @@ public class MainPage extends BasePage {
     @FindBy(linkText = "FAQ")
     protected WebElement faqButton;
 
-    public MainPage(WebDriver driver) {
-        super(driver);
+    public MainPage(ManagedDriver managedDriver) {
+        super(managedDriver);
         this.root = "https://www.boardgamegeek.com/";
     }
 
     public MainPage visit() {
         driver.get(root);
         return this;
+    }
+
+    @Given("I am on the main page")
+    public MainPage openMainPage() {
+        return visit();
     }
 
     public MainPage clickOnHelp() {
@@ -33,16 +40,18 @@ public class MainPage extends BasePage {
 
     public FaqPage clickOnFaq() {
         faqButton.click();
-        return new FaqPage(driver);
+        return new FaqPage(managedDriver);
     }
 
+    @When("I click on Sign in button")
     public SignInPage clickOnSignIn() {
         signInButton.click();
-        return new SignInPage(driver);
+        return new SignInPage(managedDriver);
     }
 
+    @When("I enter search term: {}")
     public GeekSearchResultPage searchGames(String input) {
         search_bar.sendKeys(input + Keys.ENTER);
-        return new GeekSearchResultPage(driver);
+        return new GeekSearchResultPage(managedDriver);
     }
 }

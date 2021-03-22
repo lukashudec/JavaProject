@@ -4,6 +4,7 @@ import cucumberE2ETests.pages.MainPage;
 import cucumberE2ETests.pages.FaqPage;
 import cucumberE2ETests.pages.GeekSearchResultPage;
 import cucumberE2ETests.pages.SignInPage;
+import cucumberE2ETests.utility.ManagedDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,18 +16,17 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.*;
 
 class E2ETest {
-    WebDriver driver = null;
+
+    ManagedDriver driver = new ManagedDriver();
 
     @BeforeEach
     public void beforeStep() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/lenovo/Downloads/chromedriver_win32_89/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.setUp();
     }
 
     @AfterEach
     public void afterStep() {
-        driver.quit();
+        driver.tearDown();
     }
 
     @Test
