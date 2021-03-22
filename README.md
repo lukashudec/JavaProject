@@ -11,14 +11,12 @@ Reasons for this project
 
 * simple class , used as a target for unit testing
 
-## cucumberUnitTests
-
-* example of BDD unit tests with cucumber and JUnit
-
 ## cucumberE2ETests
 
 * BDD tests
-* web tests using selenium webDriver and api tests using RestAssured
+* web tests using selenium webDriver
+* api tests using RestAssured
+* unit tests using JUnit
 * cucmber + JUnit (runner)
 
 ## JUnitE2ETests

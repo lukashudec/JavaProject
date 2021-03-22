@@ -30,7 +30,7 @@ public class CalendarClass {
         return (timeString.length() == 1) ? '0' + timeString : timeString;
     }
 
-    public static String comp(String a, String b, int i) {
+    public String comp(String a, String b, int i) {
         return (a.compareTo(b) == i) ? a : b;
     }
 
@@ -71,10 +71,9 @@ public class CalendarClass {
         tempCalendar.addAll(rawCalendar);
         tempCalendar.add(new String[]{bounds[1], "00:00"});
         for (String[] s : tempCalendar) {
-            String[] timeFrom = s[0].split(":");
-            String[] timeTo = s[1].split(":");
-            result.add(new Integer[]{Integer.parseInt(timeFrom[0]) * 60 + Integer.parseInt(timeFrom[1]),
-                    Integer.parseInt(timeTo[0]) * 60 + Integer.parseInt(timeTo[1])});
+            int [] timeFrom = Arrays.stream(s[0].split(":")).mapToInt(Integer::parseInt).toArray();
+            int [] timeTo = Arrays.stream(s[1].split(":")).mapToInt(Integer::parseInt).toArray();
+            result.add(new Integer[]{timeFrom[0] * 60 + timeFrom[1], timeTo[0] * 60 + timeTo[1]});
         }
         return result;
     }
@@ -86,10 +85,8 @@ public class CalendarClass {
     public List<Integer[]> getFreeTime(int minDuration) {
         List<Integer[]> result = new ArrayList<>();
         for (int i = 0; i < calendar.size() - 1; i++) {
-            Integer[] event = calendar.get(i);
-            Integer[] nextEvent = calendar.get(i + 1);
-            if (nextEvent[0] - event[1] >= minDuration) {
-                result.add(new Integer[]{event[1], nextEvent[0]});
+            if (calendar.get(i + 1)[0] - calendar.get(i)[1] >= minDuration) {
+                result.add(new Integer[]{calendar.get(i)[1], calendar.get(i + 1)[0]});
             }
         }
         return result;
