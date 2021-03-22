@@ -1,14 +1,11 @@
 package cucumberE2ETests.api;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.FilterableRequestSpecification;
-import io.restassured.specification.RequestSpecification;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +18,7 @@ public class typicodeAPI {
     public Response response;
     public FilterableRequestSpecification request = (FilterableRequestSpecification) new RequestSpecBuilder().build();
 
-    @When("Experimental request post with id:{}")
+    @When("I request post with id:{}")
     public Response get(String input) {
         request.baseUri(API_ENDPOINT)
                 .basePath(GET_POSTS);
@@ -31,6 +28,7 @@ public class typicodeAPI {
         return response;
     }
 
+    @When("I send post request with title:{}, body:{}, userId:{}")
     public Response post(String title, String body, String userId) {
         Map<String, String> reqBody = new HashMap<>();
         reqBody.put("title", title);
@@ -45,20 +43,17 @@ public class typicodeAPI {
         return response;
     }
 
-    public boolean getValueFromBody(String key, String input) {
-        return response.getBody().jsonPath()
-                .getString(key).contains(input);
-    }
 
-    @Then("Experimental status is {}")
+    @Then("response status is {}")
     public typicodeAPI responseStatusIs(String input) {
         assertEquals(Integer.parseInt(input), response.getStatusCode());
         return this;
     }
 
+    @Then("response key:{} contains {}")
     public typicodeAPI responseContainsKeyEqualTo(String key, String input) {
         assertNotNull(response.getBody().jsonPath().getString(key));
-        assertTrue(getValueFromBody(key, input));
+        assertTrue(response.getBody().jsonPath().getString(key).contains(input));
         return this;
     }
 }
