@@ -12,8 +12,7 @@ Feature: Api testing
       | 105     | Lorem     | 404    |
 
   Scenario Outline: All tests positive
-    Given title:<title>, body:<body>, userId:<user_id>
-    When I send post request
+    Given I send post request with title:<title>, body:<body>, userId:<user_id>
     Then response status is <status>
     And response key:body contains <body>
     And response key:title contains <title>

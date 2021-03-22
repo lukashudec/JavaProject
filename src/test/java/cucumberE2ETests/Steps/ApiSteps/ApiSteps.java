@@ -2,40 +2,30 @@ package cucumberE2ETests.Steps.ApiSteps;
 
 import cucumberE2ETests.api.typicodeAPI;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.response.Response;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ApiSteps {
-    Response response;
     typicodeAPI api = new typicodeAPI();
 
-    @When("I send post request")
-    public void iSendPostRequest() {
-        response = api.post();
+    @When("I send post request with title:{}, body:{}, userId:{}")
+    public void iSendPostRequest(String title, String body, String userId) {
+        api.post(title, body, userId);
     }
 
     @When("I request post with id:{}")
     public void iRequestPostWithIdPost_id(String input) {
-        response = api.get(input);
+        api.get(input);
     }
 
     @Then("response status is {}")
     public void responseStatusIsStatus(String input) {
-        assertEquals(Integer.parseInt(input), response.getStatusCode());
+        api.responseStatusIs(input);
     }
 
     @And("response key:{} contains {}")
     public void responseContainsKeyEqualTo(String key, String input) {
-        assertNotNull(response.getBody().jsonPath().getString(key));
-        assertTrue(api.getValueFromBody(key, input));
-    }
-
-    @Given("title:{}, body:{}, userId:{}")
-    public void titleTitleBodyBodyUserIdUser_id(String title, String body, String userId) {
-        api.preparePost(title, body, userId);
+        api.responseContainsKeyEqualTo(key,input);
     }
 }

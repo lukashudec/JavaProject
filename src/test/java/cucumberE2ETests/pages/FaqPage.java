@@ -5,8 +5,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class FaqPage extends BoardGameBasePage {
+public class FaqPage extends MainPage {
 
     @FindBy(id = "wiki-search")
     protected WebElement helpSearch;
@@ -22,8 +23,14 @@ public class FaqPage extends BoardGameBasePage {
         root = "https://www.boardgamegeek.com/wiki/page/BoardGameGeek_FAQ";
     }
 
-    public void search(String input) {
+    public FaqPage visit() {
+        driver.get(root);
+        return this;
+    }
+
+    public FaqPage search(String input) {
         helpSearch.sendKeys(input + Keys.ENTER);
+        return this;
     }
 
     public WebElement checkResultTable(String searchResult) {
@@ -36,5 +43,20 @@ public class FaqPage extends BoardGameBasePage {
 
     public boolean articleDisplayed() {
         return faqArticle != null;
+    }
+
+    public FaqPage isSearchDisplayed() {
+        assertTrue(helpSearch.isDisplayed());
+        return this;
+    }
+
+    public FaqPage isArticleDisplayed() {
+        assertNotNull(faqArticle);
+        return this;
+    }
+
+    public FaqPage isResultFound(String searchResult) {
+        assertNotNull(checkResultTable(searchResult));
+        return this;
     }
 }

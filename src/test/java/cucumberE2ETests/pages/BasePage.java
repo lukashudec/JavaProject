@@ -13,7 +13,7 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public BasePage go() {
+    public BasePage visit() {
         driver.get(root);
         return this;
     }
