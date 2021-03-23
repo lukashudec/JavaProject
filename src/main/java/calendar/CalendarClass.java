@@ -1,6 +1,9 @@
 package calendar;
 
+import utility.ListCreator;
+
 import java.util.*;
+
 
 public class CalendarClass {
     List<String[]> rawCalendar;
@@ -57,18 +60,17 @@ public class CalendarClass {
     }
 
     public CalendarClass mergeWithCalendar(CalendarClass cal2) {
-        List<String[]> newCalendar = this.rawCalendar;
-        newCalendar.addAll(cal2.rawCalendar);
-        newCalendar.sort(Comparator.comparing(o -> (o)[0]));
-        return new CalendarClass(newCalendar, new String[]{comp(bounds[0], cal2.bounds[0], 1), comp(bounds[1], cal2.bounds[1], -1)});
+        return new CalendarClass(new ListCreator<>(rawCalendar,cal2.rawCalendar).sort(Comparator.comparing(o -> (o)[0]))
+                , new String[]{comp(bounds[0], cal2.bounds[0], 1), comp(bounds[1], cal2.bounds[1], -1)});
     }
 
     public List<Integer[]> formatInput() {
-        List<String[]> tempCalendar = new ArrayList<>();
+        List<String[]> tempCalendar = new ListCreator<>(new String[]{"00:00", bounds[0]})
+                .add(rawCalendar)
+                .add(new String[]{bounds[1], "00:00"})
+                .get();
+
         List<Integer[]> result = new ArrayList<>();
-        tempCalendar.add(new String[]{"00:00", bounds[0]});
-        tempCalendar.addAll(rawCalendar);
-        tempCalendar.add(new String[]{bounds[1], "00:00"});
         for (String[] s : tempCalendar) {
             int[] timeFrom = Arrays.stream(s[0].split(":")).mapToInt(Integer::parseInt).toArray();
             int[] timeTo = Arrays.stream(s[1].split(":")).mapToInt(Integer::parseInt).toArray();

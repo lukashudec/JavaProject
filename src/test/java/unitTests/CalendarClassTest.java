@@ -36,7 +36,7 @@ class CalendarClassTest {
     @Test
     void test_calendarMerge() {
         CalendarClass result = new CalendarClass("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00", "10:00-18:30");
-        assertEquals(calendar3.mergeWithCalendar(calendar4).toString(), result.toString(), "Not equal");
+        assertEquals(result.toString(), calendar3.mergeWithCalendar(calendar4).toString(),"Not equal");
     }
 
     @Test
