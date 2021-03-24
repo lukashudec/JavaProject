@@ -1,14 +1,13 @@
 package calendar;
 
 import utility.ListCreator;
-
 import java.util.*;
 
 
 public class CalendarClass {
-    List<String[]> rawCalendar;
-    String[] bounds;
-    List<Integer[]> calendar;
+    private List<String[]> rawCalendar;
+    private String[] bounds;
+    private List<Integer[]> calendar;
 
     public CalendarClass(List<String[]> rawCalendar, String[] bounds) {
         this.rawCalendar = rawCalendar;
@@ -30,7 +29,7 @@ public class CalendarClass {
 
     public static String formatTime(int time) {
         String timeString = String.valueOf(time);
-        return (timeString.length() == 1) ? '0' + timeString : timeString;
+        return (timeString.length() == 1) ? ( '0' + timeString ): timeString;
     }
 
     public String comp(String a, String b, int i) {

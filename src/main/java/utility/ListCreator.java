@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ListCreator<E> {
-    List<E> lst = new ArrayList<>();
+    protected List<E> lst = new ArrayList<>();
 
     public ListCreator(List<E> args) {
         lst.addAll(args);

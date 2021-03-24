@@ -22,7 +22,7 @@ class E2ETest {
     }
 
     @Test
-    void searchForGame() {
+    void testSearchForGame() {
 /*
     Given I am on the home page
     When I enter search term: Prophecy
@@ -54,7 +54,7 @@ class E2ETest {
     }
 
     @Test
-    void testHelpSearach() {
+    void testHelpSearch() {
 /*
     Given I am on the FAQ page
     Then search box is present
