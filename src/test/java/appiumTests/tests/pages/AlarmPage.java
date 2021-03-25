@@ -50,7 +50,7 @@ public class AlarmPage extends MainPage {
     }
 
     public AlarmPage deleteAlarm(int row) {
-        this.expandAlarm(row);
+        expandAlarm(row);
         driver.findElementById("com.google.android.deskclock:id/delete").click();
         return this;
     }

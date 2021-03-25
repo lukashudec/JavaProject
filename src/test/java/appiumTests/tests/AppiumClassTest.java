@@ -62,6 +62,9 @@ class AppiumClassTest {
         System.out.println("Setting up");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "android");
+        // startup should be faster by +-3s (per test)
+        caps.setCapability("skipDeviceInitialization", true);
+        caps.setCapability("skipServerInstallation", true);
         driver = new AppiumDriver<>(server.getUrl(), caps);
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
@@ -94,6 +97,11 @@ class AppiumClassTest {
                 .visit()
                 .goToAlarm()
                 .createNewAlarm(12,30, new String[]{"Monday", "Friday"});
+    }
+
+    @Test
+    void testInitTime() {
+        System.out.println("init");
     }
 
     @Test
