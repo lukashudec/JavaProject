@@ -44,8 +44,8 @@ public class AlarmPage extends MainPage {
         // repeat checkbox
         driver.findElementById("com.google.android.deskclock:id/repeat_onoff").click();
 
-        this.clickOnDay("Monday");
-        this.clickOnDay("Friday");
+        clickOnDay("Monday");
+        clickOnDay("Friday");
         return this;
     }
 

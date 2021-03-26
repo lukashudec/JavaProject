@@ -31,15 +31,16 @@ Reasons for this project
 
 ## locustTests
 
-to do
+to do performance testing
 
 ## appiumTests
 
-to do
+* appium, jUnit, selenium
+* depends on appium installation and settings (instal node.js, appium, androidStudo ; create virtual device, create snapshot of device etc.)
+* atm Im not happy with execution speed ( every test has cca 10s init(appium, emulator, driver) )
 
 ## TO DO
 
-* add apium tests
 * add locust performance test
 
 
