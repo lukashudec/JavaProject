@@ -2,12 +2,12 @@ package unitTests;
 
 import calendar.CalendarClass;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CalendarClassTest {
     CalendarClass calendar1 = new CalendarClass(new ArrayList<>(List.of
@@ -27,10 +27,23 @@ class CalendarClassTest {
         assertEquals(calendar1.toString(), calendar2.toString(), "Not equal");
     }
 
+    @Test()
+    void testCalendarCreationFail() {
+        // space after 09 , before number 16        !                      !
+       assertThrows(NumberFormatException.class,
+               () -> new CalendarClass("09 :00-10:30,12:00-13:00, 16:00-18:00", "09:00-20:00"));
+    }
+
     @Test
     void testCalendarEquality() {
         assertEquals(calendar2, calendar1, "Not equal");
         assertEquals(calendar1.getCalendar(), calendar2.getCalendar(), "Not equal");
+    }
+
+    @Test
+    void testCalendarNonEquality() {
+        assertNotEquals(calendar3, calendar1, "Not equal");
+        assertNotEquals(calendar3.getCalendar(), calendar2.getCalendar(), "Not equal");
     }
 
     @Test

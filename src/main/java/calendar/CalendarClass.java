@@ -38,16 +38,9 @@ public class CalendarClass {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CalendarClass calendar2 = (CalendarClass) o;
-        return this.hashCode() == calendar2.hashCode();
+        return Arrays.deepEquals(calendar.toArray(), ((CalendarClass)o).calendar.toArray());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.toString());
-    }
 
     @Override
     public String toString() {
