@@ -5,7 +5,7 @@ import locustTests.tasks.exampleTask;
 import java.io.IOException;
 
 public class Runner {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         ProcessBuilder processBuilder = new ProcessBuilder("python","-m","locust","-f","C:/Users/lenovo/IdeaProjects/untitled/src/test/java/locustTests/master/master.py","--master","--master-bind-host=127.0.0.1","--master-bind-port=5557");
      //   ProcessBuilder processBuilder = new ProcessBuilder("python","-m","locust","-f","C:/Users/lenovo/IdeaProjects/untitled/src/test/java/locustTests/master/masterAlt.py");
         processBuilder.redirectErrorStream(true);
