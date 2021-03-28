@@ -38,8 +38,17 @@ public class CalendarClass {
 
     @Override
     public boolean equals(Object o) {
-        return Arrays.deepEquals(calendar.toArray(), ((CalendarClass)o).calendar.toArray());
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CalendarClass calendar2 = (CalendarClass) o;
+        return Arrays.deepEquals(calendar.toArray(), calendar2.calendar.toArray());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(calendar);
+    }
+
 
 
     @Override
