@@ -25,6 +25,7 @@ public class ManagedDriver {
 
     @After
     public void tearDown() {
+        driver.close();
         driver.quit();
     }
 }
