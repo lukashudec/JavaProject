@@ -30,7 +30,7 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                            <value>io.qameta.allure.junit5.AllureJunit5</value>
                         </property>
                     </properties>
                     <systemProperties>
@@ -106,12 +106,12 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- <dependency>
+        <dependency>
              <groupId>io.cucumber</groupId>
              <artifactId>cucumber-junit-platform-engine</artifactId>
              <version>${cucumber.version}</version>
              <scope>test</scope>
-         </dependency> -->
+         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
@@ -178,6 +178,11 @@
             <artifactId>locust4j</artifactId>
             <version>1.0.14</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>2.13.1</version>
         </dependency>
     </dependencies>
 

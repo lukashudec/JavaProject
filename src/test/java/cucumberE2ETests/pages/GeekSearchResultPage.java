@@ -3,6 +3,7 @@ package cucumberE2ETests.pages;
 
 import cucumberE2ETests.utility.ManagedDriver;
 import io.cucumber.java.en.Then;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -25,12 +26,14 @@ public class GeekSearchResultPage extends BasePage {
     }
 
     @Then("Search results for link: {} should appear")
+    @Step
     public GeekSearchResultPage isGameLinkFound(String input) {
         assertNotEquals(0, getGameLink(input).size());
         return this;
     }
 
     @Then("Search results for image: {} should appear")
+    @Step
     public GeekSearchResultPage isGameImageFound(String input) {
         assertNotEquals(0, getGameImage(input).size());
         return this;
