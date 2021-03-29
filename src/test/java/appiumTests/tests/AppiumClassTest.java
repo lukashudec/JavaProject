@@ -7,21 +7,26 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
-import org.junit.jupiter.api.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
-class AppiumClassTest {
+public class AppiumClassTest {
 
     static AppiumDriver<MobileElement> driver;
     static AppiumDriverLocalService server;
     static Process process;
 
 
-    @BeforeAll
-    static void setUp() throws IOException {
+    @BeforeClass
+    public static void setUp() throws IOException {
         process = new ProcessBuilder("C:/Users/lenovo/AppData/Local/Android/Sdk/emulator/emulator.exe", "-avd", "Gala_11", "-no-snapshot-save")
                 .start();
 
@@ -41,43 +46,43 @@ class AppiumClassTest {
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         driver.resetApp();
 
     }
 
-    @AfterAll
-    static void close() throws InterruptedException {
+    @AfterClass
+    public static void close() throws InterruptedException {
         driver.quit();
         server.stop();
         process.children().forEach(ProcessHandle::destroy);
         process.destroyForcibly().waitFor();
     }
 
-        @Test
-        void testAppium() {
+    @Test
+    public void testAppium() {
         // this test can be remade and addted to CreateDelete -> CreateDeleteEdit to save additional time on test running
-            new MainPage(driver)
-                    .visit()
-                    .goToAlarm()
-                    .expandAlarm(1)
-                    .clickOnDay("Monday")
-                    .clickOnDay("Tuesday")
-                    .clickOnDay("Wednesday");
+        new MainPage(driver)
+                .visit()
+                .goToAlarm()
+                .expandAlarm(1)
+                .clickOnDay("Monday")
+                .clickOnDay("Tuesday")
+                .clickOnDay("Wednesday");
         }
 
-        @Test
-        void testCreateDeleteAlarm() {
+    @Test
+    public void testCreateDeleteAlarm() {
         /* two tests combined into one
         * starting appium,emulator,driver is time consuming so it should be better to write more complex tests
         * even though writing complex tests is antipattern */
-            new MainPage(driver)
-                    .visit()
-                    .goToAlarm()
-                    .createNewAlarm(12, 30, new String[]{"Monday", "Friday"})
-                    .goToAlarm()
-                    .deleteAlarm(1);
-        }
+        new MainPage(driver)
+                .visit()
+                .goToAlarm()
+                .createNewAlarm(12, 30, new String[]{"Monday", "Friday"})
+                .goToAlarm()
+                .deleteAlarm(1);
+    }
 
 }

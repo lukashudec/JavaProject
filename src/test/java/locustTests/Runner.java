@@ -3,6 +3,7 @@ package locustTests;
 import com.github.myzhan.locust4j.Locust;
 import locustTests.master.locustMaster;
 import locustTests.tasks.exampleTask;
+
 import java.io.IOException;
 
 public class Runner {
