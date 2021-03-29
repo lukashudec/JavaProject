@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class CalendarClassTests {
+class CalendarClassTests {
     CalendarClass calendar1 = new CalendarClass(new ArrayList<>(List.of
             (new String[]{"09:00", "10:30"}, new String[]{"12:00", "13:00"}, new String[]{"16:00", "18:00"})), new String[]{"09:00", "20:00"});
     CalendarClass calendar2 = new CalendarClass("09:00-10:30,12:00-13:00,16:00-18:00", "09:00-20:00");
@@ -17,50 +17,50 @@ public class CalendarClassTests {
     CalendarClass calendar4 = new CalendarClass("10:00-11:45,12:30-14:30", "10:00-18:30");
 
     @Test
-    public void testToString() {
+    void testToString() {
         String result = "[[09:00, 10:30], [12:00, 13:00], [16:00, 18:00]] / [09:00, 20:00]";
         assertEquals(result, calendar1.toString(), "Not equal");
     }
 
     @Test
-    public void testCalendarCreation() {
+    void testCalendarCreation() {
         assertEquals(calendar1.toString(), calendar2.toString(), "Not equal");
     }
 
     @Test()
-    public void testCalendarCreationFail() {
+    void testCalendarCreationFail() {
         // space after 09 , before number 16        !                      !
        assertThrows(NumberFormatException.class,
                () -> new CalendarClass("09 :00-10:30,12:00-13:00, 16:00-18:00", "09:00-20:00"));
     }
 
     @Test
-    public void testCalendarEquality() {
+    void testCalendarEquality() {
         assertEquals(calendar2, calendar1, "Not equal");
         assertEquals(calendar1.getCalendar(), calendar2.getCalendar(), "Not equal");
     }
 
     @Test
-    public void testCalendarNonEquality() {
+    void testCalendarNonEquality() {
         assertNotEquals(calendar3, calendar1, "Not equal");
         assertNotEquals(calendar3.getCalendar(), calendar2.getCalendar(), "Not equal");
     }
 
     @Test
-    public void testCalendarMerge() {
+    void testCalendarMerge() {
         CalendarClass result = new CalendarClass("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00", "10:00-18:30");
         assertEquals(result.toString(), calendar3.mergeWithCalendar(calendar4).toString(),"Not equal");
     }
 
     @Test
-    public void testCalendarGetPossibleEventsWith() {
+    void testCalendarGetPossibleEventsWith() {
         List<Integer[]> cal3 = calendar3.mergeWithCalendar(calendar4).getFreeTime();
         List<Integer[]> cal4 = calendar3.getPossibleEvents(calendar4, 30);
         assertArrayEquals(cal3.toArray(), cal4.toArray(), "Not equal");
     }
 
     @Test
-    public void testCalendarGetFreeTimeWithParam() {
+    void testCalendarGetFreeTimeWithParam() {
         CalendarClass cal1 = new CalendarClass("09:00-10:30,11:00-13:00,16:00-18:00",
                 "09:00-20:00");
 

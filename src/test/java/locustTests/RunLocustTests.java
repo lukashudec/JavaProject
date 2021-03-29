@@ -3,10 +3,13 @@ package locustTests;
 import com.github.myzhan.locust4j.Locust;
 import locustTests.master.locustMaster;
 import locustTests.tasks.exampleTask;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class RunLocustTests {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class RunLocustTests {
     public static void main(String[] args) throws IOException {
         // http://localhost:8089/
         locustMaster masterServer = new locustMaster("C:/Users/lenovo/IdeaProjects/untitled/src/test/java/locustTests/master/master.py")
@@ -17,7 +20,8 @@ public class RunLocustTests {
         locust.setMasterHost(masterServer.host);
         locust.setMasterPort(masterServer.port); //some free port to run the Locust slave
         locust.run(new exampleTask(1)); // <- You custom performance tasks should be here
-
-
+    }
+    @Test
+    void testForSonarLint() {
     }
 }
