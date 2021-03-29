@@ -7,7 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class E2ETest {
+class RunE2EoldTests {
 
     ManagedDriver driver = new ManagedDriver();
 

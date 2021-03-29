@@ -4,10 +4,11 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
+
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = {"pretty"},
-        features = "src/test/java/cucumberE2ETests/Features/UNIT",
-        glue = "/cucumberE2ETests/Steps/UnitSteps")
-public class RunUnitTest {
+        features = "src/test/java/cucumberE2ETests/Features/API",
+        glue = "/cucumberE2ETests/api")
+public class RunApiTests {
 
 }

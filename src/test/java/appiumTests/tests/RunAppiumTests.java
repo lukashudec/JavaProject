@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
-public class AppiumClassTest {
+public class RunAppiumTests {
 
     static AppiumDriver<MobileElement> driver;
     static AppiumDriverLocalService server;

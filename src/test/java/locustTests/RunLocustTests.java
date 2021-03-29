@@ -6,7 +6,7 @@ import locustTests.tasks.exampleTask;
 
 import java.io.IOException;
 
-public class Runner {
+public class RunLocustTests {
     public static void main(String[] args) throws IOException {
         // http://localhost:8089/
         locustMaster masterServer = new locustMaster("C:/Users/lenovo/IdeaProjects/untitled/src/test/java/locustTests/master/master.py")

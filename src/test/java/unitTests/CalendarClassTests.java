@@ -1,14 +1,15 @@
 package unitTests;
 
 import calendar.CalendarClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class CalendarClassTest {
+public class CalendarClassTests {
     CalendarClass calendar1 = new CalendarClass(new ArrayList<>(List.of
             (new String[]{"09:00", "10:30"}, new String[]{"12:00", "13:00"}, new String[]{"16:00", "18:00"})), new String[]{"09:00", "20:00"});
     CalendarClass calendar2 = new CalendarClass("09:00-10:30,12:00-13:00,16:00-18:00", "09:00-20:00");
