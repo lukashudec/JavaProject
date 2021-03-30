@@ -1,6 +1,6 @@
 package locustTests.tasks;
 
-import calendar.CalendarClass;
+import calendar.legacy.CalendarClass;
 import com.github.myzhan.locust4j.AbstractTask;
 import com.github.myzhan.locust4j.stats.RequestSuccess;
 import com.github.myzhan.locust4j.stats.Stats;

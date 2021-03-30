@@ -1,6 +1,6 @@
-package unitTests;
+package unitTests.legacy;
 
-import calendar.CalendarClass;
+import calendar.legacy.CalendarClass;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

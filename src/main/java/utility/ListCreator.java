@@ -34,9 +34,19 @@ public class ListCreator<E> {
         return lst;
     }
 
+    public List<E> getTrimmed(int fromIndex, int toIndex) {
+        return lst.subList(fromIndex,lst.size()-toIndex);
+    }
+
     public List<E> sort(Comparator<? super E> c) {
         List<E> rtn = lst;
         rtn.sort(c);
         return rtn;
     }
+
+    public ListCreator<E> sortWith(Comparator<? super E> c) {
+        lst.sort(c);
+        return this;
+    }
+
 }
