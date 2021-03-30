@@ -6,9 +6,9 @@ import java.util.*;
 
 
 public class CalendarClass {
-    private List<String[]> rawCalendar;
-    private String[] bounds;
-    private List<Integer[]> calendar;
+    private final List<String[]> rawCalendar;
+    private final String[] bounds;
+    private final List<Integer[]> calendar;
 
     public CalendarClass(List<String[]> rawCalendar, String[] bounds) {
         this.rawCalendar = rawCalendar;
@@ -28,33 +28,8 @@ public class CalendarClass {
         return result;
     }
 
-    public static String formatTime(int time) {
-        String timeString = String.valueOf(time);
-        return (timeString.length() == 1) ? ( '0' + timeString ): timeString;
-    }
-
     public String comp(String a, String b, int i) {
         return (a.compareTo(b) == i) ? a : b;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CalendarClass calendar2 = (CalendarClass) o;
-        return Arrays.deepEquals(calendar.toArray(), calendar2.calendar.toArray());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(calendar);
-    }
-
-
-
-    @Override
-    public String toString() {
-        return Arrays.deepToString(this.rawCalendar.toArray()) + " / " + Arrays.toString(this.bounds);
     }
 
     public String getCalendar() {
@@ -110,6 +85,29 @@ public class CalendarClass {
                     formatTime(i[1] / 60) + ':' + formatTime(i[1] % 60)});
         }
         return Arrays.deepToString(result.toArray());
+    }
+
+    public String formatTime(int time) {
+        String timeString = String.valueOf(time);
+        return (timeString.length() == 1) ? ( '0' + timeString ): timeString;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CalendarClass calendar2 = (CalendarClass) o;
+        return Arrays.deepEquals(calendar.toArray(), calendar2.calendar.toArray());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(calendar);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.deepToString(this.rawCalendar.toArray()) + " / " + Arrays.toString(this.bounds);
     }
 }
 
