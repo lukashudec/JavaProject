@@ -58,9 +58,10 @@ public class CalendarCreator {
         return this.mergeWith(cal2).getFreeTime(minDuration);
     }
 
-    public String getCalendar() {
-        return events.toString();
+    public Events getEvents() {
+        return new Events(events);
     }
+
 }
 
 

@@ -1,4 +1,4 @@
-package appiumTests.tests.pages;
+package appiumTests.pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;

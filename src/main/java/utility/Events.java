@@ -1,22 +1,21 @@
 package utility;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Events{
-    private final List<TimeTuple> eventList;
-
+public class Events extends ArrayList<TimeTuple> {
     public Events(List<TimeTuple> events) {
-        this.eventList=events;
+        super(events);
     }
 
     @Override
     public String toString() {
-        return this.eventList.toString();
+        return super.toString();
     }
 
     public String toPrettyString() {
         StringBuilder prettyResult  = new StringBuilder();
-        for (TimeTuple t : eventList) {
+        for (TimeTuple t : this) {
             prettyResult.append(t.strFrom())
                     .append("-")
                     .append(t.strTo())
@@ -24,4 +23,5 @@ public class Events{
         }
         return prettyResult.deleteCharAt(prettyResult.length()-1).toString();
     }
+
 }

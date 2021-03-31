@@ -4,14 +4,18 @@ Reasons for this project
 
 * part of AT portfolio
 * demonstration of Java + test frameworks knowledge
-* learning Java + test fw
+* learning Java + test frameworks + ( patterns, antipatterns, good practices etc. ) 
 * playground / place for experimenting :)
 
-## calendar
+## /src/main/java/
+### calendar
 
 * simple class , used as a target for unit testing
+* originally created for learning Python and copied to Java
+* needs rework from scratch
 
-## cucumberE2ETests
+## /src/test/java
+### cucumberE2ETests
 
 * BDD tests
 * web tests using selenium webDriver
@@ -19,28 +23,44 @@ Reasons for this project
 * unit tests using JUnit
 * cucmber + JUnit (runner)
 
-## JUnitE2ETests
+### E2ETests
 
 * classic E2E web tests using selenium webDriver
 * selenium + JUnit
-* to better understand / show PageObjectModel (BDD tests should not be used for web testing)
+* to better understand / show fluent PageObjectModel
 
-## unitTests
+### unitTests
 
 * unit tests for calendar.py using JUnit
 
-## locustTests
+### locustTests
 
-to do performance testing
+* simple performance test
+* RunLocustTests -> starts server and slave node with defined tasks
+* /tasks/ - tests scenarios
 
-## appiumTests
+### appiumTests
 
 * appium, jUnit, selenium
 * depends on appium installation and settings (instal node.js, appium, androidStudo ; create virtual device, create snapshot of device etc.)
-* atm Im not happy with execution speed ( every test has cca 10s init(appium, emulator, driver) )
+* starts appium server, emulator (snapshot) and appiumDriver
+* driver is restarted (not recreated) after each tests - significant boot speed boost
+
+## build and report
+### Maven + Allure
+
+* tests with 'Run' are excluded from build
+* allure report should be generated 
 
 ## TO DO
 
-* add locust performance test
-
+* rewrite CalendarClass -> CalendarCreator
+  * cover with unit test and BDD unit test
+  * remove / archive CalendarClass + tests  
+* add docker with mySQL DB
+* add DB access
+* expand reports with screenshots etc.   
+* ? check Gattling as performance test alternative
+* ? security Testing package / soemthing. (mostly security testing from Input POW (sql injections etc.))
+* ? graddle
 

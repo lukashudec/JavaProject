@@ -1,4 +1,4 @@
-package JUnitE2ETests;
+package E2ETests;
 
 import cucumberE2ETests.pages.FaqPage;
 import cucumberE2ETests.pages.MainPage;

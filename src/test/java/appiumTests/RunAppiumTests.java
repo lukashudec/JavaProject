@@ -1,6 +1,6 @@
-package appiumTests.tests;
+package appiumTests;
 
-import appiumTests.tests.pages.MainPage;
+import appiumTests.pages.MainPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.remote.MobileCapabilityType;

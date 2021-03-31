@@ -20,30 +20,6 @@ class CalendarCreatorTests {
 
     @Test
     void testCalendars() {
-        System.out.println("cal2");
-        System.out.print(calendar.getCalendar());
-
-        System.out.println();
-        System.out.println("cal1");
-        System.out.print(oldCalendar.getCalendar());
-    }
-
-    @Test
-    void testMergeCalendars() {
-        CalendarClass oldMerged = oldCalendarMerge1.mergeWithCalendar(oldCalendarMerge2);
-        System.out.println(oldMerged.getCalendar());
-
-        CalendarCreator merged = calendarMerge1.mergeWith(calendarMerge2);
-        System.out.println(merged.getCalendar());
-    }
-
-    @Test
-    void testFreeTime() {
-        List<Integer[]> oldMerged = oldCalendarMerge1.mergeWithCalendar(oldCalendarMerge2).getFreeTime();
-        System.out.println(oldMerged.toString());
-
-        CalendarCreator merged = calendarMerge1.mergeWith(calendarMerge2);
-        System.out.println(merged.getFreeTime(30).toPrettyString());
     }
 }
 
