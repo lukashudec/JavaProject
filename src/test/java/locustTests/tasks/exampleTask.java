@@ -4,12 +4,14 @@ import calendar.legacy.CalendarClass;
 import com.github.myzhan.locust4j.AbstractTask;
 import com.github.myzhan.locust4j.stats.RequestSuccess;
 import com.github.myzhan.locust4j.stats.Stats;
+import locustTests.master.locustTimer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class exampleTask extends AbstractTask {
     public int weight;
     public String name = "success";
+    private locustTimer timer = new locustTimer(name);
     long startTime;
 
     // test data
@@ -36,9 +38,7 @@ public class exampleTask extends AbstractTask {
         CalendarClass result = new CalendarClass("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00", "10:00-18:30");
         recordSuccess( "constructor creation",startTime);
 
-        startTime = System.currentTimeMillis();
-        CalendarClass merged =calendar3.mergeWithCalendar(calendar4);
-        recordSuccess( "merge creation",startTime);
+        CalendarClass merged = timer.measure(()->calendar3.mergeWithCalendar(calendar4),"merge creation");
         assertEquals(result.toString(), merged.toString(),"Not equal");
     }
 

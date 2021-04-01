@@ -1,6 +1,7 @@
 package locustTests.master;
 
 import java.io.IOException;
+import java.util.function.Supplier;
 
 public class locustMaster {
     ProcessBuilder masterProcess;
@@ -36,5 +37,13 @@ public class locustMaster {
     public locustMaster start() throws IOException {
         masterProcess.start();
         return this;
+    }
+
+    public static <T> T takeTime(Supplier<T> s) {
+        System.out.println("pre");
+        T result = s.get();
+        System.out.println("post");
+        return result;
+        // takeTime(() -> method(param))
     }
 }
