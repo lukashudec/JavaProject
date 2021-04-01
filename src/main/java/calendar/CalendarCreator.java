@@ -3,7 +3,6 @@ package calendar;
 import utility.Events;
 import utility.ListCreator;
 import utility.TimeTuple;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
