@@ -53,14 +53,34 @@ Reasons for this project
 * allure report should be generated 
 
 ## TO DO
-
-* rewrite CalendarClass -> CalendarCreator
+### high priority
+*  CLEAN UP, FIX PATHS (f.e. CHROMEDRIVER), CMD (f.e. appium, locust)  
+* ~~rewrite CalendarClass -> CalendarCreator~~
+  * ~~class for better time block representation~~
+  * ~~list decorator for readable output~~
   * cover with unit test and BDD unit test
-  * remove / archive CalendarClass + tests  
+  * remove / archive CalendarClass + tests
 * add docker with mySQL DB
-* add DB access
-* expand reports with screenshots etc.   
+  * ~~prepare populated docker mysql image~~
+
+### medium priority
+* expand reports with screenshots etc. 
+* add support for screen checker (check if webpage image is matching expectation)
+
+### low priority
+* ? nosql + docker
 * ? check Gattling as performance test alternative
 * ? security Testing package / soemthing. (mostly security testing from Input POW (sql injections etc.))
 * ? graddle
 
+### done
+* ~~prepare driver for injectionDep (pikocontainer)~~
+* ~~add old E2E test~~
+* ~~rework cucumber steps~~
+* ~~appium support~~
+  * ~~sample appium tests ( android )~~
+* ~~locust performance test support~~
+  * ~~nice way for time measures~~
+* ~~add DB access~~
+* ~~maven cleanup~~
+* ~~allure reporting~~ 
