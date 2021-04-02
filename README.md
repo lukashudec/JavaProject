@@ -54,7 +54,7 @@ Reasons for this project
 
 ## TO DO
 ### high priority
-*  CLEAN UP, FIX PATHS (f.e. CHROMEDRIVER), CMD (f.e. appium, locust)  
+* CLEAN UP, FIX PATHS (f.e. CHROMEDRIVER), CMD (f.e. appium, locust)  
 * ~~rewrite CalendarClass -> CalendarCreator~~
   * ~~class for better time block representation~~
   * ~~list decorator for readable output~~
@@ -62,6 +62,7 @@ Reasons for this project
   * remove / archive CalendarClass + tests
 * add docker with mySQL DB
   * ~~prepare populated docker mysql image~~
+
 
 ### medium priority
 * expand reports with screenshots etc. 
@@ -72,6 +73,7 @@ Reasons for this project
 * ? check Gattling as performance test alternative
 * ? security Testing package / soemthing. (mostly security testing from Input POW (sql injections etc.))
 * ? graddle
+* ? hibernate
 
 ### done
 * ~~prepare driver for injectionDep (pikocontainer)~~
