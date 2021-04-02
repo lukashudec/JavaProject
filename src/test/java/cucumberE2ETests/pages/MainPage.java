@@ -26,7 +26,7 @@ public class MainPage extends BasePage {
 
     @Step
     public MainPage visit() {
-        driver.get(root);
+        managedDriver.get(root);
         return this;
     }
 

@@ -7,23 +7,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
-    protected WebDriver driver;
     protected String root;
     protected ManagedDriver managedDriver;
 
     public BasePage(ManagedDriver managedDriver) {
         this.managedDriver = managedDriver;
-        this.driver = managedDriver.getDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(managedDriver, this);
     }
 
     public BasePage visit() {
-        driver.get(root);
+        managedDriver.get(root);
         return this;
     }
 
     public WebElement find(By element) {
-        return driver.findElement(element);
+        return managedDriver.findElement(element);
     }
 
 }

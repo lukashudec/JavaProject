@@ -18,11 +18,11 @@ public class GeekSearchResultPage extends BasePage {
     }
 
     public List<WebElement> getGameLink(String input) {
-        return driver.findElements(By.linkText(input));
+        return managedDriver.findElements(By.linkText(input));
     }
 
     public List<WebElement> getGameImage(String input) {
-        return driver.findElements(By.xpath("//img[@alt='Board Game: " + input + "']"));
+        return managedDriver.findElements(By.xpath("//img[@alt='Board Game: " + input + "']"));
     }
 
     @Then("Search results for link: {} should appear")
