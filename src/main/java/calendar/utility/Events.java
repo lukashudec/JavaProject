@@ -1,9 +1,10 @@
-package utility;
+package calendar.utility;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Events extends ArrayList<TimeTuple> {
+
     public Events(List<TimeTuple> events) {
         super(events);
     }

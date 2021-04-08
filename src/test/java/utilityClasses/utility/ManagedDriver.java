@@ -1,4 +1,4 @@
-package cucumberE2ETests.utility;
+package utilityClasses.utility;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

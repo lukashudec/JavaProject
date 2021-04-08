@@ -1,4 +1,4 @@
-package utility;
+package calendar.utility;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,7 +26,7 @@ public class ListCreator<E> {
     }
 
     public ListCreator<E> add(List<E> args) {
-            lst.addAll(args);
+        lst.addAll(args);
         return this;
     }
 

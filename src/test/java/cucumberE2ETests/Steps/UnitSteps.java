@@ -1,7 +1,7 @@
-package cucumberE2ETests.Steps.UnitSteps;
+package cucumberE2ETests.Steps;
 
 import calendar.legacy.CalendarClass;
-import cucumberE2ETests.utility.Entry;
+import utilityClasses.utility.Entry;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
