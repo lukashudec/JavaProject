@@ -55,18 +55,22 @@ Reasons for this project
 ## TO DO
 ### high priority
 * CLEAN UP, FIX PATHS (f.e. CHROMEDRIVER), CMD (f.e. appium, locust)  
+  * clean variable names (f.e. in unit tests)
 * ~~rewrite CalendarClass -> CalendarCreator~~
   * ~~class for better time block representation~~
   * ~~list decorator for readable output~~
-  * cover with unit test and BDD unit test
+  * ~~cover with unit test~~
+  * cover with BDD unit test
   * remove / archive CalendarClass + tests
 * add docker with mySQL DB
   * ~~prepare populated docker mysql image~~
 
-
 ### medium priority
 * expand reports with screenshots etc. 
 * add support for screen checker (check if webpage image is matching expectation)
+* dockerize Appium
+  * dockerize emulator snapshot
+* dockerize locust  
 
 ### low priority
 * ? nosql + docker
