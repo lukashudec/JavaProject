@@ -1,7 +1,7 @@
 package cucumberE2ETests.pages;
 
 
-import cucumberE2ETests.utility.ManagedDriver;
+import utilityClasses.utility.ManagedDriver;
 import io.cucumber.java.en.Then;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

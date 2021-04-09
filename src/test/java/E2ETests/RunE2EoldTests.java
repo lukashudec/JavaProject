@@ -2,7 +2,7 @@ package E2ETests;
 
 import cucumberE2ETests.pages.FaqPage;
 import cucumberE2ETests.pages.MainPage;
-import cucumberE2ETests.utility.ManagedDriver;
+import utilityClasses.utility.ManagedDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

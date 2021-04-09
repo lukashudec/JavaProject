@@ -1,6 +1,6 @@
 package cucumberE2ETests.pages;
 
-import cucumberE2ETests.utility.ManagedDriver;
+import utilityClasses.utility.ManagedDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

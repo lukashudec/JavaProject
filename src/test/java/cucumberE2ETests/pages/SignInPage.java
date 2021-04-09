@@ -1,7 +1,7 @@
 package cucumberE2ETests.pages;
 
-import cucumberE2ETests.utility.Entry;
-import cucumberE2ETests.utility.ManagedDriver;
+import utilityClasses.utility.Entry;
+import utilityClasses.utility.ManagedDriver;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
