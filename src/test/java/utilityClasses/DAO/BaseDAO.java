@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class baseDAO {
+public abstract class BaseDAO {
     String database;
     String user;
     String pwd;
 
-    public baseDAO(String database, String user, String pwd) {
+    public BaseDAO(String database, String user, String pwd) {
         this.database = database;
         this.user = user;
         this.pwd = pwd;

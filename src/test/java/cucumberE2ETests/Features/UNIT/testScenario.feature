@@ -7,8 +7,8 @@ Feature: Calendar merging
       | 10:00-11:45,12:30-14:30 | 10:00-18:30 |
     When merging calendars
     Then result is
-      | calendar                                        | bounds      |
-      | 10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00 | 10:00-18:30 |
+      | calendar                            | bounds      |
+      | 10:00-11:45,12:00-14:30,16:00-18:00 | 10:00-18:30 |
 
   Scenario: test2
     Given calendars
@@ -16,26 +16,26 @@ Feature: Calendar merging
       | 12:00-13:00,16:00-18:00 | 09:00-20:00 |
       | 10:00-11:45,12:30-14:30 | 10:00-18:30 |
     Then different creations are equal
-    And possible events are [[14:30, 16:00], [18:00, 18:30]]
+    And possible events are 14:30-16:00,18:00-18:30
 
 
   Scenario: test3
     Given calendars
       | calendar                | bounds      |
       | 12:00-13:00,16:00-18:00 | 09:00-20:00 |
-    Then free time is [[09:00, 12:00], [13:00, 16:00], [18:00, 20:00]]
+    Then free time is 09:00-12:00,13:00-16:00,18:00-20:00
 
   Scenario Outline: test4
     Given calendar <calendar> with <bounds>
     Then toString returns <result>
     Examples: examples
-      | calendar                | bounds      | result                                            |
-      | 12:00-13:00,16:00-18:00 | 09:00-20:00 | [[12:00, 13:00], [16:00, 18:00]] / [09:00, 20:00] |
-      | 10:00-11:45,12:30-14:30 | 10:00-18:30 | [[10:00, 11:45], [12:30, 14:30]] / [10:00, 18:30] |
+      | calendar                | bounds      | result                                          |
+      | 12:00-13:00,16:00-18:00 | 09:00-20:00 | 00:00-09:00,12:00-13:00,16:00-18:00,20:00-24:00 |
+      | 10:00-11:45,12:30-14:30 | 10:00-18:30 | 00:00-11:45,12:30-14:30,18:30-24:00             |
 
   Scenario: test5
     Given calendars
       | calendar                | bounds      |
       | 12:00-13:00,16:00-18:00 | 09:00-20:00 |
-    Then getCalendar is [[0, 540], [720, 780], [960, 1080], [1200, 0]]
+    Then getEvents.toString is [0-540, 720-780, 960-1080, 1200-1440]
 

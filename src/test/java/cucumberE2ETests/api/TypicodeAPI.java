@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class typicodeAPI {
+public class TypicodeAPI {
     public Response response;
     public FilterableRequestSpecification request = (FilterableRequestSpecification) new RequestSpecBuilder().build();
     String API_ENDPOINT = "https://jsonplaceholder.typicode.com";
@@ -46,13 +46,13 @@ public class typicodeAPI {
 
 
     @Then("response status is {}")
-    public typicodeAPI responseStatusIs(String input) {
+    public TypicodeAPI responseStatusIs(String input) {
         assertEquals(Integer.parseInt(input), response.getStatusCode());
         return this;
     }
 
     @Then("response key:{} contains {}")
-    public typicodeAPI responseContainsKeyEqualTo(String key, String input) {
+    public TypicodeAPI responseContainsKeyEqualTo(String key, String input) {
         assertNotNull(response.getBody().jsonPath().getString(key));
         assertTrue(response.getBody().jsonPath().getString(key).contains(input));
         return this;

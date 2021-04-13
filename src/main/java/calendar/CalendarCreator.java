@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class CalendarCreator {
     private static final int DEFAULT_MINIMAL_DURATION = 30;
     private static final int DEFAULT_MAXIMUM_DURATION = 1440;
-    private final List<TimeTuple> events= new ArrayList<>();
+    private List<TimeTuple> events= new ArrayList<>();
 
     public CalendarCreator(String rawCalendar, String rawBounds) {
         // transform Strings to TimeTouples
@@ -22,6 +22,7 @@ public class CalendarCreator {
         events.add(new TimeTuple("00:00-"+bounds.strFrom()));
         events.addAll(rawEvents);
         events.add(new TimeTuple(bounds.strTo() +"-24:00"));
+        squishAndClean(events);
 
     }
 

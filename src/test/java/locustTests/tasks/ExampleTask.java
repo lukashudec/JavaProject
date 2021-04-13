@@ -1,22 +1,22 @@
 package locustTests.tasks;
 
-import calendar.legacy.CalendarClass;
+import calendar.CalendarCreator;
 import com.github.myzhan.locust4j.AbstractTask;
 import com.github.myzhan.locust4j.stats.RequestSuccess;
 import com.github.myzhan.locust4j.stats.Stats;
-import locustTests.master.locustTimer;
+import locustTests.master.LocustTimer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class exampleTask extends AbstractTask {
+public class ExampleTask extends AbstractTask {
     public int weight;
     public String name = "success";
-    private locustTimer timer = new locustTimer(name);
+    private LocustTimer timer = new LocustTimer(name);
     long startTime;
 
     // test data
-    CalendarClass calendar3 = new CalendarClass("12:00-13:00,16:00-18:00", "09:00-20:00");
-    CalendarClass calendar4 = new CalendarClass("10:00-11:45,12:30-14:30", "10:00-18:30");
+    CalendarCreator calendar3 = new CalendarCreator("12:00-13:00,16:00-18:00", "09:00-20:00");
+    CalendarCreator calendar4 = new CalendarCreator("10:00-11:45,12:30-14:30", "10:00-18:30");
 
     @Override
     public int getWeight() {
@@ -28,17 +28,17 @@ public class exampleTask extends AbstractTask {
         return name;
     }
 
-    public exampleTask(int weight){
+    public ExampleTask(int weight){
         this.weight = weight;
     }
 
     @Override
     public void execute() {
         startTime = System.currentTimeMillis();
-        CalendarClass result = new CalendarClass("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00", "10:00-18:30");
+        CalendarCreator result = new CalendarCreator("10:00-11:45,12:00-13:00,12:30-14:30,16:00-18:00", "10:00-18:30");
         recordSuccess( "constructor creation",startTime);
 
-        CalendarClass merged = timer.measure(()->calendar3.mergeWithCalendar(calendar4),"merge creation");
+        CalendarCreator merged = timer.measure(()->calendar3.mergeWith(calendar4),"merge creation");
         assertEquals(result.toString(), merged.toString(),"Not equal");
     }
 

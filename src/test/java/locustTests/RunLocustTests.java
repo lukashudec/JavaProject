@@ -1,21 +1,21 @@
 package locustTests;
 
 import com.github.myzhan.locust4j.Locust;
-import locustTests.master.locustMaster;
-import locustTests.tasks.exampleTask;
+import locustTests.master.LocustMaster;
+import locustTests.tasks.ExampleTask;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 
 class RunLocustTests {
-    private static locustMaster masterServer;
+    private static LocustMaster masterServer;
     private static Locust slave;
 
     @BeforeAll
     static void startLocustServer() throws IOException {
         // http://localhost:8089/
-        masterServer = new locustMaster("C:/Users/lenovo/IdeaProjects/untitled/src/test/java/locustTests/master/master.py")
+        masterServer = new LocustMaster()
                 .redirectIO()
                 .start();
 
@@ -26,6 +26,6 @@ class RunLocustTests {
 
     @Test
     void testStartSlaveTask() {
-        slave.run(new exampleTask(1)); // <- You custom performance tasks should be here
+        slave.run(new ExampleTask(1)); // <- Your custom performance tasks should be here
     }
 }

@@ -1,16 +1,15 @@
 package locustTests.master;
 
 import java.io.IOException;
-import java.util.function.Supplier;
 
-public class locustMaster {
+public class LocustMaster {
     ProcessBuilder masterProcess;
     String[] arguments;
     public String path;
     public String host;
     public int port;
 
-    public locustMaster(String path, String host, String port) {
+    public LocustMaster(String path, String host, String port) {
         this.path=path;
         this.host=host;
         this.port=Integer.parseInt(port);
@@ -20,30 +19,26 @@ public class locustMaster {
         masterProcess = new ProcessBuilder(arguments);
     }
 
-    public locustMaster(String path) {
+    public LocustMaster(String path) {
         this(path,"127.0.0.1","5557");
+    }
+
+    public LocustMaster() {
+        this("C:/Users/lenovo/IdeaProjects/untitled/src/test/java/locustTests/master/master.py");
     }
 
     public ProcessBuilder getProcess() {
         return masterProcess;
     }
 
-    public locustMaster redirectIO() {
+    public LocustMaster redirectIO() {
         masterProcess.redirectErrorStream(true);
         masterProcess.inheritIO();
         return this;
     }
 
-    public locustMaster start() throws IOException {
+    public LocustMaster start() throws IOException {
         masterProcess.start();
         return this;
-    }
-
-    public static <T> T takeTime(Supplier<T> s) {
-        System.out.println("pre");
-        T result = s.get();
-        System.out.println("post");
-        return result;
-        // takeTime(() -> method(param))
     }
 }

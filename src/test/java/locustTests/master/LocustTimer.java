@@ -5,11 +5,11 @@ import com.github.myzhan.locust4j.stats.Stats;
 import java.util.function.Supplier;
 
 
-public class locustTimer {
+public class LocustTimer {
     private final String type;
     long startTime;
 
-    public locustTimer(String name) {
+    public LocustTimer(String name) {
         this.type = name;
     }
 

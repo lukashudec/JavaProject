@@ -1,7 +1,6 @@
 package unitTests;
 
 import calendar.CalendarCreator;
-import calendar.legacy.CalendarClass;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
