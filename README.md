@@ -7,12 +7,16 @@ Reasons for this project
 * learning Java + test frameworks + ( patterns, antipatterns, good practices etc. ) 
 * playground / place for experimenting :)
 
-## /src/main/java/
-### calendar
+## /src/main/java/calendar
+### calendarCreator
 
 * simple class , used as a target for unit testing
 * originally created for learning Python and copied to Java
-* needs rework from scratch
+
+## /src/main/java/calendar
+### utility
+
+* different helper classes
 
 ## /src/test/java
 ### cucumberE2ETests
@@ -31,7 +35,7 @@ Reasons for this project
 
 ### unitTests
 
-* unit tests for calendar.py using JUnit
+* unit tests for calendarCreator using JUnit
 
 ### locustTests
 
@@ -56,21 +60,14 @@ Reasons for this project
 ### high priority
 * CLEAN UP, FIX PATHS (f.e. CHROMEDRIVER), CMD (f.e. appium, locust)  
   * clean variable names (f.e. in unit tests)
-* ~~rewrite CalendarClass -> CalendarCreator~~
-  * ~~class for better time block representation~~
-  * ~~list decorator for readable output~~
-  * ~~cover with unit test~~
-  * cover with BDD unit test
-  * remove / archive CalendarClass + tests
-* add docker with mySQL DB
-  * ~~prepare populated docker mysql image~~
-
+  
 ### medium priority
 * expand reports with screenshots etc. 
 * add support for screen checker (check if webpage image is matching expectation)
 * dockerize Appium
   * dockerize emulator snapshot
 * dockerize locust  
+* dockerize Selenium (chrome, chromedriver)
 
 ### low priority
 * ? nosql + docker
@@ -90,3 +87,11 @@ Reasons for this project
 * ~~add DB access~~
 * ~~maven cleanup~~
 * ~~allure reporting~~ 
+* ~~rewrite CalendarClass -> CalendarCreator~~
+  * ~~class for better time block representation~~
+  * ~~list decorator for readable output~~
+  * ~~cover with unit test~~
+  * ~~cover with BDD unit test~~
+  * ~~remove / archive CalendarClass + tests~~
+* ~~add docker with mySQL DB~~
+  * ~~prepare populated docker mysql image~~
