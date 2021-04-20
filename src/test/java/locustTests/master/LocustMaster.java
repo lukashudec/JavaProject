@@ -1,10 +1,11 @@
 package locustTests.master;
 
+import utilityClasses.utility.resourceMapping;
+
 import java.io.IOException;
 
 public class LocustMaster {
     ProcessBuilder masterProcess;
-    String[] arguments;
     public String path;
     public String host;
     public int port;
@@ -13,10 +14,9 @@ public class LocustMaster {
         this.path=path;
         this.host=host;
         this.port=Integer.parseInt(port);
-        arguments= new String[]{"python", "-m", "locust", "-f",
-                path,
-                "--master", "--master-bind-host=" + host, "--master-bind-port=" + port};
-        masterProcess = new ProcessBuilder(arguments);
+
+        masterProcess = new ProcessBuilder("python", "-m", "locust", "-f", path,
+                "--master", "--master-bind-host=" + host, "--master-bind-port=" + port);
     }
 
     public LocustMaster(String path) {
@@ -24,7 +24,7 @@ public class LocustMaster {
     }
 
     public LocustMaster() {
-        this("C:/Users/lenovo/IdeaProjects/untitled/src/test/java/locustTests/master/master.py");
+        this(resourceMapping.pathToMasterPy);
     }
 
     public ProcessBuilder getProcess() {

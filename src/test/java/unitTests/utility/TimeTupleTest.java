@@ -47,14 +47,14 @@ class TimeTupleTest {
 
     @Test
     void testSortFrom() {
-        assertEquals(t1,TimeTuple.sort(t3,t1,"FROM")[0]);
-        assertEquals(t3,TimeTuple.sort(t3,t1,"FROM")[1]);
+        assertEquals(t1,TimeTuple.sortFrom(t3,t1)[0]);
+        assertEquals(t3,TimeTuple.sortFrom(t3,t1)[1]);
     }
 
     @Test
     void testSortTo() {
-        assertEquals(t1,TimeTuple.sort(t3,t1,"TO")[0]);
-        assertEquals(t3,TimeTuple.sort(t3,t1,"TO")[1]);
+        assertEquals(t1,TimeTuple.sortTo(t3,t1)[0]);
+        assertEquals(t3,TimeTuple.sortTo(t3,t1)[1]);
     }
 
     @Test

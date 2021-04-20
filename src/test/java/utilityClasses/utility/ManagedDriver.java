@@ -6,21 +6,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
-public class ManagedDriver extends ChromeDriver {
+public class ManagedDriver {
+    private WebDriver driver;
 
-    public WebDriver getDriver() {
-        return this;
-    }
 
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/lenovo/Downloads/chromedriver_win32_89/chromedriver.exe");
-        manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-    }
+        public WebDriver getDriver() {
+            return driver;
+        }
 
-    @After
-    public void tearDown() {
-        close();
-        quit();
-    }
+        @Before
+        public void setUp() {
+            System.setProperty("webdriver.chrome.driver", resourceMapping.pathToChromedriver);
+            driver = new ChromeDriver();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        }
+
+        @After
+        public void tearDown() {
+            driver.close();driver.quit();
+
+        }
 }
+
+

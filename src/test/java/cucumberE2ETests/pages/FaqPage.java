@@ -29,7 +29,7 @@ public class FaqPage extends BasePage {
     }
 
     public FaqPage visit() {
-        managedDriver.get(root);
+        managedDriver.getDriver().get(root);
         return this;
     }
 

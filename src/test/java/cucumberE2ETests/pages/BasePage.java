@@ -11,16 +11,16 @@ public class BasePage {
 
     public BasePage(ManagedDriver managedDriver) {
         this.managedDriver = managedDriver;
-        PageFactory.initElements(managedDriver, this);
+        PageFactory.initElements(managedDriver.getDriver(), this);
     }
 
     public BasePage visit() {
-        managedDriver.get(root);
+        managedDriver.getDriver().get(root);
         return this;
     }
 
     public WebElement find(By element) {
-        return managedDriver.findElement(element);
+        return managedDriver.getDriver().findElement(element);
     }
 
 }

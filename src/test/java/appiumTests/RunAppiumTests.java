@@ -13,6 +13,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import utilityClasses.utility.resourceMapping;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +28,7 @@ public class RunAppiumTests {
 
     @BeforeClass
     public static void setUp() throws IOException {
-        process = new ProcessBuilder("C:/Users/lenovo/AppData/Local/Android/Sdk/emulator/emulator.exe", "-avd", "Gala_11", "-no-snapshot-save")
+        process = new ProcessBuilder(resourceMapping.pathToEmulator, "-avd", "Gala_11", "-no-snapshot-save")
                 .start();
 
         AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder()

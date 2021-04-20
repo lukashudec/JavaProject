@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ExampleTask extends AbstractTask {
     public int weight;
     public String name = "success";
-    private LocustTimer timer = new LocustTimer(name);
+    private final LocustTimer timer = new LocustTimer(name);
     long startTime;
 
     // test data

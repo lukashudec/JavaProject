@@ -34,24 +34,24 @@ public class TimeTuple {
     }
 
 
-    public static TimeTuple[] sort(TimeTuple one, TimeTuple two,String key) {
-        if (key.equals("FROM")) {
-            if (one.intFrom <=two.intFrom) {
+    public static TimeTuple[] sortFrom(TimeTuple one, TimeTuple two) {
+        if (one.intFrom <=two.intFrom)
+            return new TimeTuple[]{one,two};
+        return new TimeTuple[]{two,one};
+    }
+
+    public static TimeTuple[] sortTo(TimeTuple one, TimeTuple two) {
+        if (one.intTo <=two.intTo)
                 return new TimeTuple[]{one,two};
-            } else return new TimeTuple[]{two,one}; }
-        else if (key.equals("TO")) {
-            if (one.intTo <=two.intTo) {
-                return new TimeTuple[]{one,two};
-            } else return new TimeTuple[]{two,one}; }
-        return new TimeTuple[]{one,two};
+        return new TimeTuple[]{two,one};
     }
 
     public TimeTuple squish(TimeTuple t) {
-        TimeTuple first = sort(this,t,"FROM")[0];
-        TimeTuple second = sort(this,t,"FROM")[1];
+        TimeTuple first = sortFrom(this,t)[0];
+        TimeTuple second = sortFrom(this,t)[1];
 
         if (second.intFrom>=first.intFrom && second.intFrom<=first.intTo) {
-            return new TimeTuple(first.strFrom,sort(first,second,"TO")[1].strTo);
+            return new TimeTuple(first.strFrom,sortTo(first,second)[1].strTo);
         }
 
         return null;
