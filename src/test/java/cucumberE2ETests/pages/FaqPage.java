@@ -45,7 +45,7 @@ public class FaqPage extends BasePage {
     }
 
     public WebElement checkResultTable(String searchResult) {
-        return forumTable.findElement(By.xpath("//a[@href='/wiki/page/" + searchResult + "']"));
+        return findElement(By.xpath("//a[@href='/wiki/page/" + searchResult + "']"));
     }
 
     @Then("search box is present")

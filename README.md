@@ -8,17 +8,25 @@ Reasons for this project
 * playground / place for experimenting :)
 
 ## /src/main/java/calendar
+
 ### calendarCreator
 
 * simple class , used as a target for unit testing
 * originally created for learning Python and copied to Java
 
-## /src/main/java/calendar
 ### utility
 
 * different helper classes
 
 ## /src/test/java
+
+### appiumTests
+
+* appium, jUnit, selenium
+* depends on appium installation and settings (instal node.js, appium, androidStudo ; create virtual device, create snapshot of device etc.)
+* starts appium server, emulator (snapshot) and appiumDriver
+* driver is restarted (not recreated) after each tests - significant boot speed boost
+
 ### cucumberE2ETests
 
 * BDD tests
@@ -33,30 +41,36 @@ Reasons for this project
 * selenium + JUnit
 * to better understand / show fluent PageObjectModel
 
-### unitTests
-
-* unit tests for calendarCreator using JUnit
-
 ### locustTests
 
 * simple performance test
 * RunLocustTests -> starts server and slave node with defined tasks
 * /tasks/ - tests scenarios
 
-### appiumTests
+### securityTests
 
-* appium, jUnit, selenium
-* depends on appium installation and settings (instal node.js, appium, androidStudo ; create virtual device, create snapshot of device etc.)
-* starts appium server, emulator (snapshot) and appiumDriver
-* driver is restarted (not recreated) after each tests - significant boot speed boost
+* WIP
+* hopefully testing for basic security flaws that will reuse code from functional tests
+
+### unitTests
+
+* unit tests for calendarCreator using JUnit
+
+## /src/QA docs
+
+* example reports
+* example test cases
+* example bug report
 
 ## build and report
+
 ### Maven + Allure
 
 * tests with 'Run' are excluded from build
 * allure report should be generated 
 
 ## TO DO
+
 ### high priority
 * CLEAN UP, FIX PATHS (f.e. CHROMEDRIVER), CMD (f.e. appium, locust)  
   * clean variable names (f.e. in unit tests)
@@ -64,14 +78,14 @@ Reasons for this project
 ### medium priority
 * expand reports with screenshots etc. 
 * add support for screen checker (check if webpage image is matching expectation)
-* dockerize Appium
-  * dockerize emulator snapshot
-* dockerize locust  
-* dockerize Selenium (chrome, chromedriver)
+* docerization  
+  * dockerize Appium
+    * dockerize emulator snapshot
+  * dockerize locust  
+  * dockerize Selenium (chrome, chromedriver)
 
 ### low priority
 * ? nosql + docker
-* ? check Gattling as performance test alternative
 * ? security Testing package / soemthing. (mostly security testing from Input POW (sql injections etc.))
 * ? graddle
 * ? hibernate
