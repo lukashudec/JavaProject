@@ -1,9 +1,5 @@
 package cucumberE2ETests.api.AOM;
 
-import cucumberE2ETests.api.implementation.AbstractAPI;
-import cucumberE2ETests.api.implementation.GET;
-import cucumberE2ETests.api.implementation.PATCH;
-import cucumberE2ETests.api.implementation.POST;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
