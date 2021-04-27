@@ -19,6 +19,7 @@ public class LocustTimer {
         recordSuccess(name, startTime);
         return result;
         // takeTime(() -> method(param))
+        // used in functional test
     }
 
     private void recordSuccess(String name, long startTime) {
